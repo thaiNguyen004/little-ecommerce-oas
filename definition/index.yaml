@@ -16,23 +16,34 @@
         "summary" : "Find all users",
         "responses" : {
           "200" : {
-            "description" : "Get all Users success",
+            "description" : "find all - success(OK)",
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "type" : "array",
-                  "items" : {
-                    "$ref" : "#/components/schemas/User"
-                  }
+                  "$ref" : "#/components/schemas/inline_response_200"
                 }
               }
             }
           },
           "404" : {
-            "description" : "Not found users"
+            "description" : "find all - fail(NOT_FOUND) - id not found in database",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_404"
+                }
+              }
+            }
           },
           "401" : {
-            "description" : "Unauthorized"
+            "description" : "find all - fail(UNAUTHORIZED) - not login",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_401"
+                }
+              }
+            }
           }
         },
         "security" : [ {
@@ -52,25 +63,44 @@
         },
         "responses" : {
           "201" : {
-            "description" : "Create User success",
-            "headers" : {
-              "Location" : {
-                "style" : "simple",
-                "explode" : false,
+            "description" : "create a new User - success(CREATED)",
+            "content" : {
+              "application/json" : {
                 "schema" : {
-                  "type" : "string"
+                  "$ref" : "#/components/schemas/inline_response_201"
                 }
               }
             }
           },
           "403" : {
-            "description" : "Forbiden because cridential info is bad"
+            "description" : "create a new User - fail(FORBIDDEN) - because credential info is bad",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_403"
+                }
+              }
+            }
           },
           "400" : {
-            "description" : "Bad request because info is null"
+            "description" : "create a new User - fail(BAD_REQUEST) - because info is null",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_400"
+                }
+              }
+            }
           },
           "401" : {
-            "description" : "Unauthorized"
+            "description" : "create a new User - fail(UNAUTHORIZED) - not login",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_401"
+                }
+              }
+            }
           }
         },
         "security" : [ {
@@ -94,20 +124,34 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "Get User by id success",
+            "description" : "find by id - success(OK)",
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/User"
+                  "$ref" : "#/components/schemas/inline_response_200_1"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "find by id - fail(UNAUTHORIZED) - not login",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_401"
                 }
               }
             }
           },
           "404" : {
-            "description" : "User with that id not found in database"
-          },
-          "401" : {
-            "description" : "Unauthorized"
+            "description" : "find by id - fail(NOT_FOUND) - id not found in database",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_404"
+                }
+              }
+            }
           }
         },
         "security" : [ {
@@ -115,7 +159,7 @@
         } ]
       },
       "put" : {
-        "summary" : "Update User by put",
+        "summary" : "Update User",
         "parameters" : [ {
           "name" : "id",
           "in" : "path",
@@ -131,77 +175,51 @@
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/User"
+                "$ref" : "#/components/schemas/users_id_body"
               }
             }
           }
         },
         "responses" : {
           "200" : {
-            "description" : "Update User success",
+            "description" : "update User - success(OK)",
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/User"
+                  "$ref" : "#/components/schemas/inline_response_200_1"
                 }
               }
             }
           },
           "404" : {
-            "description" : "User with that id not found in database"
-          },
-          "403" : {
-            "description" : "Bad Cridential"
-          },
-          "401" : {
-            "description" : "Unauthorized"
-          }
-        },
-        "security" : [ {
-          "basicAuth" : [ ]
-        } ]
-      },
-      "patch" : {
-        "summary" : "Update User by patch",
-        "parameters" : [ {
-          "name" : "id",
-          "in" : "path",
-          "description" : "ID of the user",
-          "required" : true,
-          "style" : "simple",
-          "explode" : false,
-          "schema" : {
-            "type" : "integer"
-          }
-        } ],
-        "requestBody" : {
-          "content" : {
-            "application/json" : {
-              "schema" : {
-                "$ref" : "#/components/schemas/User"
-              }
-            }
-          }
-        },
-        "responses" : {
-          "200" : {
-            "description" : "Update User success",
+            "description" : "update User - fail(NOT_FOUND) - id not found in database",
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/User"
+                  "$ref" : "#/components/schemas/inline_response_404"
                 }
               }
             }
           },
-          "404" : {
-            "description" : "User with that id not found in database"
-          },
           "403" : {
-            "description" : "Bad Cridential"
+            "description" : "update User - fail(FORBIDDEN) - because credential info is bad",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_403"
+                }
+              }
+            }
           },
           "401" : {
-            "description" : "Unauthorized"
+            "description" : "update User - fail(UNAUTHORIZED) - not login",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_401"
+                }
+              }
+            }
           }
         },
         "security" : [ {
@@ -1883,21 +1901,23 @@
             "format" : "int64"
           },
           "name" : {
-            "type" : "string"
+            "type" : "string",
+            "description" : "the name of the detail product"
+          },
+          "size" : {
+            "$ref" : "#/components/schemas/Size"
           },
           "product" : {
             "$ref" : "#/components/schemas/Product"
           },
           "price" : {
-            "$ref" : "#/components/schemas/Price"
+            "type" : "integer",
+            "description" : "the price of the detail product"
           },
           "weight" : {
             "type" : "number",
             "description" : "weight of detail product",
             "format" : "float"
-          },
-          "size" : {
-            "$ref" : "#/components/schemas/Size"
           }
         }
       },
@@ -1928,21 +1948,30 @@
             "$ref" : "#/components/schemas/DetailProduct"
           },
           "amount" : {
-            "$ref" : "#/components/schemas/Price"
+            "type" : "integer",
+            "description" : "the amount of the line item",
+            "readOnly" : true
           },
           "quantity" : {
             "minimum" : 1,
-            "type" : "integer"
+            "type" : "integer",
+            "description" : "the quantity of the line item"
           },
           "totalPrice" : {
-            "$ref" : "#/components/schemas/Price"
+            "type" : "integer",
+            "description" : "the total price of the line item",
+            "readOnly" : true
           },
           "totalWeight" : {
-            "type" : "number"
+            "type" : "number",
+            "description" : "the total weight of the line item",
+            "format" : "float",
+            "readOnly" : true
           }
         }
       },
       "Order" : {
+        "required" : [ "lineItems" ],
         "type" : "object",
         "properties" : {
           "id" : {
@@ -1978,10 +2007,14 @@
             }
           },
           "totalPriceBeforeDiscount" : {
-            "$ref" : "#/components/schemas/Price"
+            "type" : "integer",
+            "description" : "the total price before discount",
+            "readOnly" : true
           },
           "totalPriceAfterDiscount" : {
-            "$ref" : "#/components/schemas/Price"
+            "type" : "integer",
+            "description" : "the total price after discount",
+            "readOnly" : true
           },
           "status" : {
             "type" : "string",
@@ -2012,7 +2045,7 @@
         }
       },
       "Discount" : {
-        "required" : [ "code", "end", "kinđ", "quantity", "start", "type", "value" ],
+        "required" : [ "code", "end", "kind", "quantity", "start", "type", "value" ],
         "type" : "object",
         "properties" : {
           "id" : {
@@ -2068,6 +2101,59 @@
           "status" : {
             "type" : "string",
             "enum" : [ "SUCCESS", "DELIVERY", "PENDING", "RETRY", "CANCEL", "FAILED" ]
+          }
+        }
+      },
+      "inline_response_200" : {
+        "type" : "object",
+        "properties" : {
+          "success" : {
+            "type" : "boolean",
+            "example" : true
+          },
+          "status" : {
+            "type" : "string",
+            "example" : "OK"
+          },
+          "data" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/User"
+            }
+          }
+        }
+      },
+      "inline_response_404" : {
+        "type" : "object",
+        "properties" : {
+          "success" : {
+            "type" : "boolean",
+            "example" : true
+          },
+          "status" : {
+            "type" : "string",
+            "example" : "NOT_FOUND"
+          },
+          "message" : {
+            "type" : "string",
+            "example" : "Invalid thainguyen.domain.user ID, thainguyen.domain.user not found"
+          }
+        }
+      },
+      "inline_response_401" : {
+        "type" : "object",
+        "properties" : {
+          "success" : {
+            "type" : "boolean",
+            "example" : false
+          },
+          "status" : {
+            "type" : "string",
+            "example" : "UNAUTHORIZED"
+          },
+          "message" : {
+            "type" : "string",
+            "example" : "You must be signed-in to perform this action"
           }
         }
       },
@@ -2136,6 +2222,142 @@
           },
           "address" : {
             "$ref" : "#/components/schemas/users_address"
+          }
+        }
+      },
+      "inline_response_201" : {
+        "type" : "object",
+        "properties" : {
+          "success" : {
+            "type" : "boolean",
+            "example" : true
+          },
+          "status" : {
+            "type" : "string",
+            "example" : "CREATED"
+          },
+          "message" : {
+            "type" : "string",
+            "example" : "Create User success"
+          }
+        }
+      },
+      "inline_response_403" : {
+        "type" : "object",
+        "properties" : {
+          "success" : {
+            "type" : "boolean",
+            "example" : false
+          },
+          "status" : {
+            "type" : "string",
+            "example" : "FORBIDDEN"
+          },
+          "message" : {
+            "type" : "string",
+            "example" : "Credential info is bad"
+          }
+        }
+      },
+      "inline_response_400" : {
+        "type" : "object",
+        "properties" : {
+          "success" : {
+            "type" : "boolean",
+            "example" : false
+          },
+          "status" : {
+            "type" : "string",
+            "example" : "BAD_REQUEST"
+          },
+          "message" : {
+            "type" : "string",
+            "example" : "Method argument not valid"
+          },
+          "errors" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string",
+              "example" : "fullname: Fullname attribute must not be null and empty!"
+            }
+          }
+        }
+      },
+      "inline_response_200_1" : {
+        "type" : "object",
+        "properties" : {
+          "success" : {
+            "type" : "boolean",
+            "example" : true
+          },
+          "status" : {
+            "type" : "string",
+            "example" : "OK"
+          },
+          "data" : {
+            "$ref" : "#/components/schemas/User"
+          }
+        }
+      },
+      "usersid_address" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "phoneNumber" : {
+            "maxLength" : 10,
+            "minLength" : 10,
+            "type" : "string"
+          },
+          "province" : {
+            "type" : "string"
+          },
+          "district" : {
+            "type" : "string"
+          },
+          "ward" : {
+            "type" : "string"
+          },
+          "detailAddress" : {
+            "type" : "string"
+          }
+        }
+      },
+      "users_id_body" : {
+        "type" : "object",
+        "properties" : {
+          "fullname" : {
+            "type" : "string",
+            "description" : "The fullname of the user"
+          },
+          "username" : {
+            "type" : "string",
+            "description" : "The username of the user"
+          },
+          "password" : {
+            "type" : "string",
+            "description" : "The password of the user"
+          },
+          "email" : {
+            "type" : "string",
+            "description" : "The email of the user"
+          },
+          "gender" : {
+            "type" : "string",
+            "description" : "The gender of the user"
+          },
+          "age" : {
+            "type" : "integer",
+            "description" : "The age of the user"
+          },
+          "avatar" : {
+            "type" : "string",
+            "description" : "The avatar of the user"
+          },
+          "address" : {
+            "$ref" : "#/components/schemas/usersid_address"
           }
         }
       },
