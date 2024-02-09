@@ -1,0 +1,2623 @@
+{
+  "openapi" : "3.0.3",
+  "info" : {
+    "title" : "SMS APIs",
+    "version" : "0.0.0"
+  },
+  "servers" : [ {
+    "url" : "https://virtserver.swaggerhub.com/NGUYENNT11032004/SMS_OAS/1.0.0",
+    "description" : "SwaggerHub API Auto Mocking"
+  }, {
+    "url" : "/api"
+  } ],
+  "paths" : {
+    "/users" : {
+      "get" : {
+        "summary" : "Find all users",
+        "responses" : {
+          "200" : {
+            "description" : "Get all Users success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/User"
+                  }
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Not found users"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      },
+      "post" : {
+        "summary" : "Create a new User",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/users_body"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "201" : {
+            "description" : "Create User success",
+            "headers" : {
+              "Location" : {
+                "style" : "simple",
+                "explode" : false,
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Forbiden because cridential info is bad"
+          },
+          "400" : {
+            "description" : "Bad request because info is null"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      }
+    },
+    "/users/{id}" : {
+      "get" : {
+        "summary" : "Get User by ID",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "ID of the user",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Get User by id success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "User with that id not found in database"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      },
+      "put" : {
+        "summary" : "Update User by put",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "ID of the user",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Update User success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "User with that id not found in database"
+          },
+          "403" : {
+            "description" : "Bad Cridential"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      },
+      "patch" : {
+        "summary" : "Update User by patch",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "ID of the user",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Update User success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "User with that id not found in database"
+          },
+          "403" : {
+            "description" : "Bad Cridential"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      }
+    },
+    "/brands" : {
+      "get" : {
+        "summary" : "Find all brands",
+        "responses" : {
+          "200" : {
+            "description" : "Get all brands success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Brand"
+                  }
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Not found brands"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      },
+      "post" : {
+        "summary" : "Create a new Brand",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Brand"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "201" : {
+            "description" : "Create Brand success",
+            "headers" : {
+              "Location" : {
+                "style" : "simple",
+                "explode" : false,
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Forbiden because cridential info is bad"
+          },
+          "400" : {
+            "description" : "name must not be null"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      }
+    },
+    "/brands/{id}" : {
+      "get" : {
+        "summary" : "Get Brand by ID",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "ID of the Brand",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Get Brand by id success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Brand"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Brand with that id not found in database"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      },
+      "put" : {
+        "summary" : "Update Brand by put",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "ID of the Brand",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Brand"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Update Brand success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Brand"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "name must not be null"
+          },
+          "404" : {
+            "description" : "Brand with that id not found in database"
+          },
+          "403" : {
+            "description" : "Forbiden because cridential info is bad"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      },
+      "patch" : {
+        "summary" : "Update Brand by patch",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "ID of the Brand",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Brand"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Update Brand success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Brand"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Brand with that id not found in database"
+          },
+          "403" : {
+            "description" : "Forbiden because cridential info is bad"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      }
+    },
+    "/categories" : {
+      "get" : {
+        "summary" : "Find all categories",
+        "responses" : {
+          "200" : {
+            "description" : "Get all categories success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Category"
+                  }
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Not found categories"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      },
+      "post" : {
+        "summary" : "Create a new Category",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/categories_body"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "201" : {
+            "description" : "Create Category success",
+            "headers" : {
+              "Location" : {
+                "style" : "simple",
+                "explode" : false,
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Forbiden because cridential info is bad"
+          },
+          "400" : {
+            "description" : "name must not be null"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      }
+    },
+    "/categories/{id}" : {
+      "get" : {
+        "summary" : "Get Category by ID",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "ID of the Category",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Get Category by id success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Category"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Category with that id not found in database"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      },
+      "put" : {
+        "summary" : "Update Category by put",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "ID of the Category",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/categories_id_body"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Update Category success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Category"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "name must not be null"
+          },
+          "404" : {
+            "description" : "Category with that id not found in database"
+          },
+          "422" : {
+            "description" : "ParentID not found"
+          },
+          "403" : {
+            "description" : "Forbiden because cridential info is bad"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      },
+      "patch" : {
+        "summary" : "Update Category by patch",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "ID of the Category",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/categories_id_body_1"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Update Category success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Category"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Category with that id not found in database"
+          },
+          "422" : {
+            "description" : "ParentID not found"
+          },
+          "403" : {
+            "description" : "Forbiden because cridential info is bad"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      }
+    },
+    "/products" : {
+      "get" : {
+        "summary" : "Find all products",
+        "responses" : {
+          "200" : {
+            "description" : "Get all products success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Product"
+                  }
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Not found products"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      },
+      "post" : {
+        "summary" : "Create a new Product",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/products_body"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "201" : {
+            "description" : "Create Product success",
+            "headers" : {
+              "Location" : {
+                "style" : "simple",
+                "explode" : false,
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Forbiden because cridential info is bad"
+          },
+          "400" : {
+            "description" : "required fields must not be null"
+          },
+          "422" : {
+            "description" : "Unprocessable entity due when create product that brand or category not found"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      }
+    },
+    "/products/{id}" : {
+      "get" : {
+        "summary" : "Get Product by ID",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "ID of the Product",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Get Product by id success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Product"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Product with that id not found in database"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      },
+      "put" : {
+        "summary" : "Update Product by put",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "ID of the Product",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/products_id_body"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Update Product success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Product"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "fields required must not be null"
+          },
+          "404" : {
+            "description" : "Product with that id not found in database"
+          },
+          "422" : {
+            "description" : "Unprocessable entity due when put product that brand or category not found"
+          },
+          "403" : {
+            "description" : "Forbiden because cridential info is bad"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      },
+      "patch" : {
+        "summary" : "Update Product by patch",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "ID of the Product",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/products_id_body_1"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Update Product success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Product"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Product with that id not found in database"
+          },
+          "422" : {
+            "description" : "Unprocessable entity due when put product that brand or category not found"
+          },
+          "403" : {
+            "description" : "Forbiden because cridential info is bad"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      }
+    },
+    "/detailproducts" : {
+      "get" : {
+        "summary" : "Find all detailproducts",
+        "responses" : {
+          "200" : {
+            "description" : "Get all detailproducts success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/DetailProduct"
+                  }
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Not found detail product"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      },
+      "post" : {
+        "summary" : "Create a new DetailProduct",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/detailproducts_body"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "201" : {
+            "description" : "Create DetailProduct success",
+            "headers" : {
+              "Location" : {
+                "style" : "simple",
+                "explode" : false,
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Forbiden because cridential info is bad"
+          },
+          "400" : {
+            "description" : "required fields must not be null"
+          },
+          "422" : {
+            "description" : "Unprocessable entity due when create detailProduct that size or product not found"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      }
+    },
+    "/detailproducts/{id}" : {
+      "get" : {
+        "summary" : "Get Detail Product by ID",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "ID of the Product",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Get Detail Product by id success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/DetailProduct"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Detail Product with that id not found in database"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      },
+      "put" : {
+        "summary" : "Update Detail Product by put",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "ID of the Product",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/detailproducts_id_body"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Update Detail Product success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/DetailProduct"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "fields required must not be null"
+          },
+          "404" : {
+            "description" : "Detail Product with that id not found in database"
+          },
+          "422" : {
+            "description" : "Unprocessable entity due when put detail product that size or product not found"
+          },
+          "403" : {
+            "description" : "Forbiden because cridential info is bad"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      },
+      "patch" : {
+        "summary" : "Update Detail Product by patch",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "ID of the Product",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/detailproducts_id_body_1"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Update Detail Product success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/DetailProduct"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Product with that id not found in database"
+          },
+          "422" : {
+            "description" : "Unprocessable entity due when put product that brand or category not found"
+          },
+          "403" : {
+            "description" : "Forbiden because cridential info is bad"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      }
+    },
+    "/orders" : {
+      "get" : {
+        "summary" : "Find all orders status [SUCCESS, PENDING] and owned",
+        "responses" : {
+          "200" : {
+            "description" : "Get all orders success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Order"
+                  }
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Not found orders"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      },
+      "post" : {
+        "summary" : "Create a new order",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/orders_body"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "201" : {
+            "description" : "Create Order success",
+            "headers" : {
+              "Location" : {
+                "style" : "simple",
+                "explode" : false,
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "required fields must not be null"
+          },
+          "422" : {
+            "description" : "Unprocessable entity due when create order that discount or detail product not found"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      }
+    },
+    "/orders/{id}" : {
+      "get" : {
+        "summary" : "Find order by Id, status [SUCCESS, PENDING] and owned",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "ID of the Product",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Get all orders success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Order"
+                  }
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Order with that id not found in database"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      },
+      "put" : {
+        "summary" : "cancel order [can only cancel orders with status PENDING]",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "ID of the Product",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "422" : {
+            "description" : "Unprocessable entity",
+            "content" : {
+              "application/json" : {
+                "examples" : {
+                  "example-1" : {
+                    "description" : "Failed due order has delivered successfully",
+                    "value" : {
+                      "success" : false,
+                      "message" : "Order with id 123 can't cancellable because order has delivered successfully",
+                      "status_code" : 422
+                    }
+                  },
+                  "example-2" : {
+                    "description" : "Failed due order is delivery processing",
+                    "value" : {
+                      "success" : false,
+                      "message" : "Order with id 123 can't cancellable because order is delivery processing",
+                      "status_code" : 422
+                    }
+                  },
+                  "example-3" : {
+                    "description" : "Failed due cancelled before",
+                    "value" : {
+                      "success" : false,
+                      "message" : "Order with id 123 has cancelled before",
+                      "status_code" : 422
+                    }
+                  },
+                  "example-4" : {
+                    "description" : "Failed due not yet supported with status order",
+                    "value" : {
+                      "success" : false,
+                      "message" : "not yet supported with status order",
+                      "status_code" : 422
+                    }
+                  },
+                  "example-5" : {
+                    "description" : "Failed due error unexpected",
+                    "value" : {
+                      "success" : false,
+                      "message" : "Order with id 123 face unexpected error",
+                      "status_code" : 422
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "200" : {
+            "description" : "Cancel success",
+            "content" : {
+              "application/json" : {
+                "examples" : {
+                  "example-1" : {
+                    "description" : "Success",
+                    "value" : {
+                      "success" : true,
+                      "message" : "Order with id 123 cancel success",
+                      "status_code" : 200
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Cancel faild due Order id not found / not own",
+            "content" : {
+              "application/json" : {
+                "examples" : {
+                  "example-1" : {
+                    "description" : "Not found",
+                    "value" : {
+                      "success" : false,
+                      "message" : "Order with id cancel success",
+                      "status_code" : 404
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      }
+    },
+    "/sizes" : {
+      "get" : {
+        "summary" : "Find all sizes",
+        "responses" : {
+          "200" : {
+            "description" : "Get all sizes success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Size"
+                  }
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Not found sizes"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      },
+      "post" : {
+        "summary" : "Create a new Size",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/sizes_body"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "201" : {
+            "description" : "Create Size success",
+            "headers" : {
+              "Location" : {
+                "style" : "simple",
+                "explode" : false,
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Forbiden because cridential info is bad"
+          },
+          "400" : {
+            "description" : "required fields must not be null"
+          },
+          "422" : {
+            "description" : "Unprocessable entity due when create Size that brand or category not found"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      }
+    },
+    "/sizes/{id}" : {
+      "get" : {
+        "summary" : "Get Size by ID",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "ID of the Size",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Get Size by id success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Size"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Size with that id not found in database"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      },
+      "put" : {
+        "summary" : "Update Size by put",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "ID of the Size",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/sizes_id_body"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Update Size success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Size"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "fields required must not be null"
+          },
+          "404" : {
+            "description" : "Size with that id not found in database"
+          },
+          "422" : {
+            "description" : "Unprocessable entity due when put Size that brand or category not found"
+          },
+          "403" : {
+            "description" : "Forbiden because cridential info is bad"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      },
+      "patch" : {
+        "summary" : "Update Size by patch",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "ID of the Size",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/sizes_id_body_1"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Update Size success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Size"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Size with that id not found in database"
+          },
+          "422" : {
+            "description" : "Unprocessable entity due when put Size that brand or category not found"
+          },
+          "403" : {
+            "description" : "Forbiden because cridential info is bad"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      }
+    },
+    "/discounts" : {
+      "get" : {
+        "summary" : "Find all discounts",
+        "responses" : {
+          "200" : {
+            "description" : "Get all discounts success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Discount"
+                  }
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "Not found discounts"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      },
+      "post" : {
+        "summary" : "Create a new discount",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/discounts_body"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "201" : {
+            "description" : "Create discount success",
+            "headers" : {
+              "Location" : {
+                "style" : "simple",
+                "explode" : false,
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Forbiden because cridential info is bad"
+          },
+          "400" : {
+            "description" : "required fields must not be null"
+          },
+          "422" : {
+            "description" : "Unprocessable entity due due percent > 100 or (perccent or amount < 1)"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      }
+    },
+    "/discounts/{id}" : {
+      "get" : {
+        "summary" : "Get discount by ID",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "ID of the discount",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Get discount by id success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Discount"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "discount with that id not found in database"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      },
+      "put" : {
+        "summary" : "Update discount by put",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "ID of the discount",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/discounts_id_body"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Update discount success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Discount"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "fields required must not be null"
+          },
+          "404" : {
+            "description" : "discount with that id not found in database"
+          },
+          "422" : {
+            "description" : "Unprocessable entity due percent > 100 or (perccent or amount < 1)"
+          },
+          "403" : {
+            "description" : "Forbiden because cridential info is bad"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      },
+      "patch" : {
+        "summary" : "Update discount by patch",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "ID of the discount",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/discounts_id_body_1"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Update discount success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Discount"
+                }
+              }
+            }
+          },
+          "404" : {
+            "description" : "discount with that id not found in database"
+          },
+          "422" : {
+            "description" : "Unprocessable entity due percent > 100 or (perccent or amount < 1)"
+          },
+          "403" : {
+            "description" : "Forbiden because cridential info is bad"
+          },
+          "401" : {
+            "description" : "Unauthorized"
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "User" : {
+        "required" : [ "age", "email", "fullname", "gender", "password", "username" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "description" : "The unique identifier for the category",
+            "format" : "int64"
+          },
+          "fullname" : {
+            "type" : "string",
+            "description" : "The fullname of the user"
+          },
+          "username" : {
+            "type" : "string",
+            "description" : "The username of the user"
+          },
+          "password" : {
+            "type" : "string",
+            "description" : "The password of the user"
+          },
+          "email" : {
+            "type" : "string",
+            "description" : "The email of the user"
+          },
+          "gender" : {
+            "type" : "string",
+            "description" : "The gender of the user"
+          },
+          "age" : {
+            "type" : "integer",
+            "description" : "The age of the user"
+          },
+          "avatar" : {
+            "type" : "string",
+            "description" : "The avatar of the user"
+          },
+          "registerdAt" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "address" : {
+            "$ref" : "#/components/schemas/Address"
+          }
+        }
+      },
+      "Address" : {
+        "required" : [ "detailAddress", "district", "phoneNumber", "province", "ward" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "phoneNumber" : {
+            "maxLength" : 10,
+            "minLength" : 10,
+            "type" : "string"
+          },
+          "province" : {
+            "type" : "string"
+          },
+          "district" : {
+            "type" : "string"
+          },
+          "ward" : {
+            "type" : "string"
+          },
+          "detailAddress" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Category" : {
+        "required" : [ "name" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "description" : "The unique identifier for the category",
+            "format" : "int64"
+          },
+          "name" : {
+            "type" : "string",
+            "description" : "The name of the category"
+          },
+          "picture" : {
+            "type" : "string",
+            "description" : "The URL or path to the category's picture"
+          },
+          "description" : {
+            "type" : "string",
+            "description" : "A description of the category"
+          },
+          "parent" : {
+            "$ref" : "#/components/schemas/Category"
+          }
+        }
+      },
+      "Brand" : {
+        "required" : [ "name" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "description" : "The unique identifier for the brand",
+            "format" : "int64"
+          },
+          "name" : {
+            "type" : "string",
+            "description" : "The name of the brand"
+          },
+          "logo" : {
+            "type" : "string",
+            "description" : "The logo of the brand"
+          }
+        }
+      },
+      "Size" : {
+        "required" : [ "brand", "category", "chest", "length", "name", "width" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "description" : "The unique identifier for the size",
+            "format" : "int64"
+          },
+          "brand" : {
+            "$ref" : "#/components/schemas/Brand"
+          },
+          "category" : {
+            "$ref" : "#/components/schemas/Category"
+          },
+          "name" : {
+            "type" : "string",
+            "description" : "The type of the size",
+            "enum" : [ "S", "M", "L", "XL", "XXL", "XXXL" ]
+          },
+          "chest" : {
+            "type" : "integer",
+            "description" : "The chest measurement of the size"
+          },
+          "length" : {
+            "type" : "integer",
+            "description" : "The length measurement of the size"
+          },
+          "width" : {
+            "type" : "integer",
+            "description" : "The width measurement of the size"
+          }
+        }
+      },
+      "Product" : {
+        "required" : [ "brand", "category", "name" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "description" : "The unique identifier for the product",
+            "format" : "int64"
+          },
+          "name" : {
+            "type" : "string",
+            "description" : "The name of the product"
+          },
+          "description" : {
+            "type" : "string",
+            "description" : "The description of the product"
+          },
+          "picture" : {
+            "type" : "string",
+            "description" : "The picture of the product"
+          },
+          "brand" : {
+            "$ref" : "#/components/schemas/Brand"
+          },
+          "category" : {
+            "$ref" : "#/components/schemas/Category"
+          },
+          "detailProducs" : {
+            "type" : "array",
+            "description" : "the list detail product of the product",
+            "items" : {
+              "$ref" : "#/components/schemas/DetailProduct"
+            }
+          }
+        }
+      },
+      "DetailProduct" : {
+        "required" : [ "name", "price", "product", "size", "weight" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "description" : "The unique identifier for the detail product",
+            "format" : "int64"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "product" : {
+            "$ref" : "#/components/schemas/Product"
+          },
+          "price" : {
+            "$ref" : "#/components/schemas/Price"
+          },
+          "weight" : {
+            "type" : "number",
+            "description" : "weight of detail product",
+            "format" : "float"
+          },
+          "size" : {
+            "$ref" : "#/components/schemas/Size"
+          }
+        }
+      },
+      "Price" : {
+        "type" : "object",
+        "properties" : {
+          "value" : {
+            "type" : "number",
+            "description" : "value of price",
+            "format" : "float"
+          },
+          "currency" : {
+            "type" : "string",
+            "description" : "currency of price"
+          }
+        }
+      },
+      "LineItem" : {
+        "required" : [ "detailProduct", "quantity" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "description" : "The unique identifier for the lineitem",
+            "format" : "int64"
+          },
+          "detailProduct" : {
+            "$ref" : "#/components/schemas/DetailProduct"
+          },
+          "amount" : {
+            "$ref" : "#/components/schemas/Price"
+          },
+          "quantity" : {
+            "minimum" : 1,
+            "type" : "integer"
+          },
+          "totalPrice" : {
+            "$ref" : "#/components/schemas/Price"
+          },
+          "totalWeight" : {
+            "type" : "number"
+          }
+        }
+      },
+      "Order" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "description" : "The unique identifier for the order",
+            "format" : "int64"
+          },
+          "user" : {
+            "$ref" : "#/components/schemas/User"
+          },
+          "lineItems" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/LineItem"
+            }
+          },
+          "address" : {
+            "$ref" : "#/components/schemas/Address"
+          },
+          "shipment" : {
+            "$ref" : "#/components/schemas/Shipment"
+          },
+          "payments" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Payment"
+            }
+          },
+          "discounts" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Discount"
+            }
+          },
+          "totalPriceBeforeDiscount" : {
+            "$ref" : "#/components/schemas/Price"
+          },
+          "totalPriceAfterDiscount" : {
+            "$ref" : "#/components/schemas/Price"
+          },
+          "status" : {
+            "type" : "string",
+            "enum" : [ "SUCCESS", "DELIVERY", "PENDING", "RETRY", "CANCEL", "FAILED" ]
+          }
+        }
+      },
+      "Payment" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "description" : "The unique identifier for the payment",
+            "format" : "int64"
+          },
+          "paymentMethod" : {
+            "type" : "string",
+            "enum" : [ "CAST", "VNPAY", "CREDITCARD", "VISA", "MASTERCARD", "ZALOPAY", "MOMO" ]
+          },
+          "amount" : {
+            "type" : "integer",
+            "description" : "amount of the payment"
+          },
+          "status" : {
+            "type" : "string",
+            "enum" : [ "SUCCESS", "DELIVERY", "PENDING", "RETRY", "CANCEL", "FAILED" ]
+          }
+        }
+      },
+      "Discount" : {
+        "required" : [ "code", "end", "kinđ", "quantity", "start", "type", "value" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "description" : "The unique identifier for the discount",
+            "format" : "int64"
+          },
+          "code" : {
+            "type" : "string",
+            "description" : "The code for the discount"
+          },
+          "type" : {
+            "type" : "string",
+            "description" : "The type for the discount",
+            "enum" : [ "PERCENTAGE", "AMOUNT" ]
+          },
+          "kind" : {
+            "type" : "string",
+            "description" : "The kind for the discount",
+            "enum" : [ "NORMAL", "FREESHIP" ]
+          },
+          "value" : {
+            "type" : "integer",
+            "description" : "The value (Integer) for the discount"
+          },
+          "quantity" : {
+            "type" : "integer",
+            "description" : "The quantity (Integer) for the discount"
+          },
+          "start" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "end" : {
+            "type" : "string",
+            "format" : "date-time"
+          }
+        }
+      },
+      "Shipment" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer"
+          },
+          "paymentMethod" : {
+            "type" : "string",
+            "enum" : [ "CAST", "VNPAY", "CREDITCARD", "VISA", "MASTERCARD", "ZALOPAY", "MOMO" ]
+          },
+          "amount" : {
+            "$ref" : "#/components/schemas/Price"
+          },
+          "status" : {
+            "type" : "string",
+            "enum" : [ "SUCCESS", "DELIVERY", "PENDING", "RETRY", "CANCEL", "FAILED" ]
+          }
+        }
+      },
+      "users_address" : {
+        "required" : [ "detailAddress", "district", "phoneNumber", "province", "ward" ],
+        "type" : "object",
+        "properties" : {
+          "phoneNumber" : {
+            "maxLength" : 10,
+            "minLength" : 10,
+            "type" : "string"
+          },
+          "province" : {
+            "type" : "string"
+          },
+          "district" : {
+            "type" : "string"
+          },
+          "ward" : {
+            "type" : "string"
+          },
+          "detailAddress" : {
+            "type" : "string"
+          },
+          "hamlet" : {
+            "type" : "string"
+          }
+        },
+        "description" : "The address of the user"
+      },
+      "users_body" : {
+        "required" : [ "age", "email", "fullname", "gender", "password", "username" ],
+        "type" : "object",
+        "properties" : {
+          "fullname" : {
+            "type" : "string",
+            "description" : "The fullname of the user"
+          },
+          "username" : {
+            "type" : "string",
+            "description" : "The username of the user"
+          },
+          "password" : {
+            "type" : "string",
+            "description" : "The password of the user"
+          },
+          "email" : {
+            "type" : "string",
+            "description" : "The email of the user"
+          },
+          "gender" : {
+            "type" : "string",
+            "description" : "The gender of the user"
+          },
+          "age" : {
+            "type" : "integer",
+            "description" : "The age of the user"
+          },
+          "avatar" : {
+            "type" : "string",
+            "description" : "The avatar of the user"
+          },
+          "registerdAt" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "address" : {
+            "$ref" : "#/components/schemas/users_address"
+          }
+        }
+      },
+      "categories_body" : {
+        "required" : [ "name" ],
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string",
+            "description" : "The name of the category"
+          },
+          "picture" : {
+            "type" : "string",
+            "description" : "The URL or path to the category's picture"
+          },
+          "description" : {
+            "type" : "string",
+            "description" : "A description of the category"
+          },
+          "parent" : {
+            "type" : "integer",
+            "description" : "The id of the parent category",
+            "format" : "int64"
+          }
+        }
+      },
+      "categories_id_body" : {
+        "required" : [ "name" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "description" : "The unique identifier for the category",
+            "format" : "int64"
+          },
+          "name" : {
+            "type" : "string",
+            "description" : "The name of the category"
+          },
+          "picture" : {
+            "type" : "string",
+            "description" : "The URL or path to the category's picture"
+          },
+          "description" : {
+            "type" : "string",
+            "description" : "A description of the category"
+          },
+          "parent" : {
+            "type" : "integer",
+            "description" : "The id of the parent category",
+            "format" : "int64"
+          }
+        }
+      },
+      "categories_id_body_1" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "description" : "The unique identifier for the category",
+            "format" : "int64"
+          },
+          "name" : {
+            "type" : "string",
+            "description" : "The name of the category"
+          },
+          "picture" : {
+            "type" : "string",
+            "description" : "The URL or path to the category's picture"
+          },
+          "description" : {
+            "type" : "string",
+            "description" : "A description of the category"
+          },
+          "parent" : {
+            "type" : "integer",
+            "description" : "The id of the parent category",
+            "format" : "int64"
+          }
+        }
+      },
+      "products_body" : {
+        "required" : [ "brand", "category", "name" ],
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string",
+            "description" : "The name of the product"
+          },
+          "description" : {
+            "type" : "string",
+            "description" : "The description of the product"
+          },
+          "picture" : {
+            "type" : "string",
+            "description" : "The picture of the product"
+          },
+          "brand" : {
+            "type" : "integer",
+            "description" : "the brand id",
+            "format" : "int64"
+          },
+          "category" : {
+            "type" : "integer",
+            "description" : "the category id",
+            "format" : "int64"
+          }
+        }
+      },
+      "products_id_body" : {
+        "required" : [ "brand", "category", "name" ],
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string",
+            "description" : "The name of the product"
+          },
+          "description" : {
+            "type" : "string",
+            "description" : "The description of the product"
+          },
+          "picture" : {
+            "type" : "string",
+            "description" : "The picture of the product"
+          },
+          "brand" : {
+            "type" : "integer",
+            "description" : "the brand id",
+            "format" : "int64"
+          },
+          "category" : {
+            "type" : "integer",
+            "description" : "the category id",
+            "format" : "int64"
+          }
+        }
+      },
+      "products_id_body_1" : {
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string",
+            "description" : "The name of the product"
+          },
+          "description" : {
+            "type" : "string",
+            "description" : "The description of the product"
+          },
+          "picture" : {
+            "type" : "string",
+            "description" : "The picture of the product"
+          },
+          "brand" : {
+            "type" : "integer",
+            "description" : "the brand id",
+            "format" : "int64"
+          },
+          "category" : {
+            "type" : "integer",
+            "description" : "the category id",
+            "format" : "int64"
+          }
+        }
+      },
+      "detailproducts_body" : {
+        "required" : [ "name", "price", "product", "size", "weight" ],
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string"
+          },
+          "product" : {
+            "$ref" : "#/components/schemas/Product"
+          },
+          "price" : {
+            "$ref" : "#/components/schemas/Price"
+          },
+          "weight" : {
+            "type" : "number",
+            "description" : "weight of detail product",
+            "format" : "float"
+          },
+          "size" : {
+            "$ref" : "#/components/schemas/Size"
+          }
+        }
+      },
+      "detailproducts_id_body" : {
+        "required" : [ "name", "price", "product", "size", "weight" ],
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string"
+          },
+          "product" : {
+            "$ref" : "#/components/schemas/Product"
+          },
+          "price" : {
+            "$ref" : "#/components/schemas/Price"
+          },
+          "weight" : {
+            "type" : "number",
+            "description" : "weight of detail product",
+            "format" : "float"
+          },
+          "size" : {
+            "$ref" : "#/components/schemas/Size"
+          }
+        }
+      },
+      "detailproducts_id_body_1" : {
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string"
+          },
+          "product" : {
+            "$ref" : "#/components/schemas/Product"
+          },
+          "price" : {
+            "$ref" : "#/components/schemas/Price"
+          },
+          "weight" : {
+            "type" : "number",
+            "description" : "weight of detail product",
+            "format" : "float"
+          },
+          "size" : {
+            "$ref" : "#/components/schemas/Size"
+          }
+        }
+      },
+      "orders_address" : {
+        "required" : [ "detailAddress", "district", "phoneNumber", "province", "ward" ],
+        "type" : "object",
+        "properties" : {
+          "phoneNumber" : {
+            "maxLength" : 10,
+            "minLength" : 10,
+            "type" : "string"
+          },
+          "province" : {
+            "type" : "string"
+          },
+          "district" : {
+            "type" : "string"
+          },
+          "ward" : {
+            "type" : "string"
+          },
+          "detailAddress" : {
+            "type" : "string"
+          }
+        },
+        "description" : "the address of buyer"
+      },
+      "orders_lineItems" : {
+        "required" : [ "detailProductId", "quantity" ],
+        "type" : "object",
+        "properties" : {
+          "detailProductId" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "quantity" : {
+            "type" : "integer",
+            "description" : "number of detailproduct for one lineitem"
+          }
+        }
+      },
+      "orders_body" : {
+        "required" : [ "address", "lineItems" ],
+        "type" : "object",
+        "properties" : {
+          "address" : {
+            "$ref" : "#/components/schemas/orders_address"
+          },
+          "discounts" : {
+            "type" : "array",
+            "description" : "array of the discount id",
+            "items" : {
+              "type" : "integer"
+            }
+          },
+          "lineItems" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/orders_lineItems"
+            }
+          }
+        }
+      },
+      "sizes_body" : {
+        "required" : [ "brand", "category", "chest", "length", "name", "width" ],
+        "type" : "object",
+        "properties" : {
+          "brand" : {
+            "type" : "integer",
+            "description" : "The identifier of the Brand"
+          },
+          "category" : {
+            "type" : "integer",
+            "description" : "The identifier of the Category"
+          },
+          "name" : {
+            "type" : "string",
+            "description" : "The type of the size",
+            "enum" : [ "S", "M", "L", "XL", "XXL", "XXXL" ]
+          },
+          "chest" : {
+            "type" : "integer",
+            "description" : "The chest measurement of the size"
+          },
+          "length" : {
+            "type" : "integer",
+            "description" : "The length measurement of the size"
+          },
+          "width" : {
+            "type" : "integer",
+            "description" : "The width measurement of the size"
+          }
+        }
+      },
+      "sizes_id_body" : {
+        "required" : [ "brand", "category", "chest", "length", "name", "width" ],
+        "type" : "object",
+        "properties" : {
+          "brand" : {
+            "type" : "integer",
+            "description" : "The identifier of the Brand"
+          },
+          "category" : {
+            "type" : "integer",
+            "description" : "The identifier of the Category"
+          },
+          "name" : {
+            "type" : "string",
+            "description" : "The type of the size",
+            "enum" : [ "S", "M", "L", "XL", "XXL", "XXXL" ]
+          },
+          "chest" : {
+            "type" : "integer",
+            "description" : "The chest measurement of the size"
+          },
+          "length" : {
+            "type" : "integer",
+            "description" : "The length measurement of the size"
+          },
+          "width" : {
+            "type" : "integer",
+            "description" : "The width measurement of the size"
+          }
+        }
+      },
+      "sizes_id_body_1" : {
+        "type" : "object",
+        "properties" : {
+          "brand" : {
+            "type" : "integer",
+            "description" : "The identifier of the Brand"
+          },
+          "category" : {
+            "type" : "integer",
+            "description" : "The identifier of the Category"
+          },
+          "name" : {
+            "type" : "string",
+            "description" : "The type of the size",
+            "enum" : [ "S", "M", "L", "XL", "XXL", "XXXL" ]
+          },
+          "chest" : {
+            "type" : "integer",
+            "description" : "The chest measurement of the size"
+          },
+          "length" : {
+            "type" : "integer",
+            "description" : "The length measurement of the size"
+          },
+          "width" : {
+            "type" : "integer",
+            "description" : "The width measurement of the size"
+          }
+        }
+      },
+      "discounts_body" : {
+        "required" : [ "code", "end", "kind", "quantity", "start", "type", "value" ],
+        "type" : "object",
+        "properties" : {
+          "code" : {
+            "type" : "string"
+          },
+          "type" : {
+            "type" : "string",
+            "enum" : [ "PERCENTAGE", "AMOUNT" ]
+          },
+          "kind" : {
+            "type" : "string",
+            "enum" : [ "NORMAL", "FREESHIP" ]
+          },
+          "value" : {
+            "type" : "integer"
+          },
+          "quantity" : {
+            "type" : "integer"
+          },
+          "start" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "end" : {
+            "type" : "string",
+            "format" : "date-time"
+          }
+        }
+      },
+      "discounts_id_body" : {
+        "required" : [ "code", "end", "kind", "quantity", "start", "type", "value" ],
+        "type" : "object",
+        "properties" : {
+          "code" : {
+            "type" : "string"
+          },
+          "type" : {
+            "type" : "string",
+            "enum" : [ "PERCENTAGE", "AMOUNT" ]
+          },
+          "kind" : {
+            "type" : "string",
+            "enum" : [ "NORMAL", "FREESHIP" ]
+          },
+          "value" : {
+            "type" : "integer"
+          },
+          "quantity" : {
+            "type" : "integer"
+          },
+          "start" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "end" : {
+            "type" : "string",
+            "format" : "date-time"
+          }
+        }
+      },
+      "discounts_id_body_1" : {
+        "type" : "object",
+        "properties" : {
+          "code" : {
+            "type" : "string"
+          },
+          "type" : {
+            "type" : "string",
+            "enum" : [ "PERCENTAGE", "AMOUNT" ]
+          },
+          "kind" : {
+            "type" : "string",
+            "enum" : [ "NORMAL", "FREESHIP" ]
+          },
+          "value" : {
+            "type" : "integer"
+          },
+          "quantity" : {
+            "type" : "integer"
+          },
+          "start" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "end" : {
+            "type" : "string",
+            "format" : "date-time"
+          }
+        }
+      }
+    },
+    "securitySchemes" : {
+      "basicAuth" : {
+        "type" : "http",
+        "scheme" : "basic"
+      }
+    }
+  }
+}
