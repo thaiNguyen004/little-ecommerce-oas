@@ -467,23 +467,34 @@
         "summary" : "Find all categories",
         "responses" : {
           "200" : {
-            "description" : "Get all categories success",
+            "description" : "find all - success(OK)",
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "type" : "array",
-                  "items" : {
-                    "$ref" : "#/components/schemas/Category"
-                  }
+                  "$ref" : "#/components/schemas/inline_response_200_4"
                 }
               }
             }
           },
           "404" : {
-            "description" : "Not found categories"
+            "description" : "find all - fail(NOT_FOUND) - id not found in database",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_404_3"
+                }
+              }
+            }
           },
           "401" : {
-            "description" : "Unauthorized"
+            "description" : "find all - fail(UNAUTHORIZED) - not login",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_401"
+                }
+              }
+            }
           }
         },
         "security" : [ {
@@ -504,7 +515,7 @@
         },
         "responses" : {
           "201" : {
-            "description" : "Create Category success",
+            "description" : "create a new Category - success(CREATED)",
             "headers" : {
               "Location" : {
                 "style" : "simple",
@@ -513,16 +524,44 @@
                   "type" : "string"
                 }
               }
+            },
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_201_2"
+                }
+              }
             }
           },
           "403" : {
-            "description" : "Forbiden because cridential info is bad"
+            "description" : "create a new Category - fail(FORBIDDEN) - because credential info is bad",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_403"
+                }
+              }
+            }
           },
           "400" : {
-            "description" : "name must not be null"
+            "description" : "create a new Category - fail(BAD_REQUEST) - because info is null or blank",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_400_2"
+                }
+              }
+            }
           },
           "401" : {
-            "description" : "Unauthorized"
+            "description" : "create a new Category - fail(UNAUTHORIZED) - not login",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_401"
+                }
+              }
+            }
           }
         },
         "security" : [ {
@@ -546,20 +585,34 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "Get Category by id success",
+            "description" : "find by id - success(OK)",
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Category"
+                  "$ref" : "#/components/schemas/inline_response_200_5"
                 }
               }
             }
           },
           "404" : {
-            "description" : "Category with that id not found in database"
+            "description" : "find by id - fail(NOT_FOUND) - id not found in database",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_404_4"
+                }
+              }
+            }
           },
           "401" : {
-            "description" : "Unauthorized"
+            "description" : "find by id - fail(UNAUTHORIZED) - not login",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_401"
+                }
+              }
+            }
           }
         },
         "security" : [ {
@@ -591,80 +644,54 @@
         },
         "responses" : {
           "200" : {
-            "description" : "Update Category success",
+            "description" : "update Category - success(OK)",
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Category"
+                  "$ref" : "#/components/schemas/inline_response_200_5"
                 }
               }
             }
           },
           "400" : {
-            "description" : "name must not be null"
-          },
-          "404" : {
-            "description" : "Category with that id not found in database"
-          },
-          "422" : {
-            "description" : "ParentID not found"
-          },
-          "403" : {
-            "description" : "Forbiden because cridential info is bad"
-          },
-          "401" : {
-            "description" : "Unauthorized"
-          }
-        },
-        "security" : [ {
-          "basicAuth" : [ ]
-        } ]
-      },
-      "patch" : {
-        "summary" : "Update Category by patch",
-        "parameters" : [ {
-          "name" : "id",
-          "in" : "path",
-          "description" : "ID of the Category",
-          "required" : true,
-          "style" : "simple",
-          "explode" : false,
-          "schema" : {
-            "type" : "integer"
-          }
-        } ],
-        "requestBody" : {
-          "content" : {
-            "application/json" : {
-              "schema" : {
-                "$ref" : "#/components/schemas/categories_id_body_1"
-              }
-            }
-          },
-          "required" : true
-        },
-        "responses" : {
-          "200" : {
-            "description" : "Update Category success",
+            "description" : "update Category - fail(BAD_REQUEST) - info importance is null or blank",
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Category"
+                  "$ref" : "#/components/schemas/inline_response_400_1"
                 }
               }
             }
           },
           "404" : {
-            "description" : "Category with that id not found in database"
-          },
-          "422" : {
-            "description" : "ParentID not found"
+            "description" : "update Category - fail(NOT_FOUND) - id not found in database",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_404_4"
+                }
+              }
+            }
           },
           "403" : {
-            "description" : "Forbiden because cridential info is bad"
+            "description" : "update Category - fail(FORBIDDEN) - because credential info is bad",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_403"
+                }
+              }
+            }
           },
           "401" : {
-            "description" : "Unauthorized"
+            "description" : "update Category - fail(UNAUTHORIZED) - not login",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_401"
+                }
+              }
+            }
           }
         },
         "security" : [ {
@@ -677,23 +704,34 @@
         "summary" : "Find all products",
         "responses" : {
           "200" : {
-            "description" : "Get all products success",
+            "description" : "find all - success(OK)",
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "type" : "array",
-                  "items" : {
-                    "$ref" : "#/components/schemas/Product"
-                  }
+                  "$ref" : "#/components/schemas/inline_response_200_6"
                 }
               }
             }
           },
           "404" : {
-            "description" : "Not found products"
+            "description" : "find all - fail(NOT_FOUND) - id not found in database",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_404_5"
+                }
+              }
+            }
           },
           "401" : {
-            "description" : "Unauthorized"
+            "description" : "find all - fail(UNAUTHORIZED) - not login",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_401"
+                }
+              }
+            }
           }
         },
         "security" : [ {
@@ -714,7 +752,7 @@
         },
         "responses" : {
           "201" : {
-            "description" : "Create Product success",
+            "description" : "create a new Product - success(CREATED)",
             "headers" : {
               "Location" : {
                 "style" : "simple",
@@ -723,19 +761,44 @@
                   "type" : "string"
                 }
               }
+            },
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_201_3"
+                }
+              }
             }
           },
           "403" : {
-            "description" : "Forbiden because cridential info is bad"
+            "description" : "create a new Product - fail(FORBIDDEN) - because credential info is bad",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_403"
+                }
+              }
+            }
           },
           "400" : {
-            "description" : "required fields must not be null"
-          },
-          "422" : {
-            "description" : "Unprocessable entity due when create product that brand or category not found"
+            "description" : "create a new Product - fail(BAD_REQUEST) - info importance is null or blank",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_400_3"
+                }
+              }
+            }
           },
           "401" : {
-            "description" : "Unauthorized"
+            "description" : "create a new Product - fail(UNAUTHORIZED) - not login",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_401"
+                }
+              }
+            }
           }
         },
         "security" : [ {
@@ -804,80 +867,54 @@
         },
         "responses" : {
           "200" : {
-            "description" : "Update Product success",
+            "description" : "update Product - success(OK)",
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Product"
+                  "$ref" : "#/components/schemas/inline_response_200_7"
                 }
               }
             }
           },
           "400" : {
-            "description" : "fields required must not be null"
-          },
-          "404" : {
-            "description" : "Product with that id not found in database"
-          },
-          "422" : {
-            "description" : "Unprocessable entity due when put product that brand or category not found"
-          },
-          "403" : {
-            "description" : "Forbiden because cridential info is bad"
-          },
-          "401" : {
-            "description" : "Unauthorized"
-          }
-        },
-        "security" : [ {
-          "basicAuth" : [ ]
-        } ]
-      },
-      "patch" : {
-        "summary" : "Update Product by patch",
-        "parameters" : [ {
-          "name" : "id",
-          "in" : "path",
-          "description" : "ID of the Product",
-          "required" : true,
-          "style" : "simple",
-          "explode" : false,
-          "schema" : {
-            "type" : "integer"
-          }
-        } ],
-        "requestBody" : {
-          "content" : {
-            "application/json" : {
-              "schema" : {
-                "$ref" : "#/components/schemas/products_id_body_1"
-              }
-            }
-          },
-          "required" : true
-        },
-        "responses" : {
-          "200" : {
-            "description" : "Update Product success",
+            "description" : "update Product - fail(BAD_REQUEST) - info importance is null or blank",
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Product"
+                  "$ref" : "#/components/schemas/inline_response_400_1"
                 }
               }
             }
           },
           "404" : {
-            "description" : "Product with that id not found in database"
-          },
-          "422" : {
-            "description" : "Unprocessable entity due when put product that brand or category not found"
+            "description" : "update Product - fail(NOT_FOUND) - id not found in database",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_404_6"
+                }
+              }
+            }
           },
           "403" : {
-            "description" : "Forbiden because cridential info is bad"
+            "description" : "update Product - fail(FORBIDDEN) - because credential info is bad",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_403"
+                }
+              }
+            }
           },
           "401" : {
-            "description" : "Unauthorized"
+            "description" : "update Product - fail(UNAUTHORIZED) - not login",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_401"
+                }
+              }
+            }
           }
         },
         "security" : [ {
@@ -2537,6 +2574,42 @@
           }
         }
       },
+      "inline_response_200_4" : {
+        "type" : "object",
+        "properties" : {
+          "success" : {
+            "type" : "boolean",
+            "example" : true
+          },
+          "status" : {
+            "type" : "string",
+            "example" : "OK"
+          },
+          "data" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Category"
+            }
+          }
+        }
+      },
+      "inline_response_404_3" : {
+        "type" : "object",
+        "properties" : {
+          "success" : {
+            "type" : "boolean",
+            "example" : true
+          },
+          "status" : {
+            "type" : "string",
+            "example" : "NOT_FOUND"
+          },
+          "message" : {
+            "type" : "string",
+            "example" : "thainguyen.domain.Category not found"
+          }
+        }
+      },
       "categories_body" : {
         "required" : [ "name" ],
         "type" : "object",
@@ -2554,9 +2627,81 @@
             "description" : "A description of the category"
           },
           "parent" : {
-            "type" : "integer",
-            "description" : "The id of the parent category",
-            "format" : "int64"
+            "$ref" : "#/components/schemas/Category"
+          }
+        }
+      },
+      "inline_response_201_2" : {
+        "type" : "object",
+        "properties" : {
+          "success" : {
+            "type" : "boolean",
+            "example" : true
+          },
+          "status" : {
+            "type" : "string",
+            "example" : "CREATED"
+          },
+          "message" : {
+            "type" : "string",
+            "example" : "Create Category success"
+          }
+        }
+      },
+      "inline_response_400_2" : {
+        "type" : "object",
+        "properties" : {
+          "success" : {
+            "type" : "boolean",
+            "example" : false
+          },
+          "status" : {
+            "type" : "string",
+            "example" : "BAD_REQUEST"
+          },
+          "message" : {
+            "type" : "string",
+            "example" : "Method argument not valid"
+          },
+          "errors" : {
+            "type" : "array",
+            "example" : [ "Name attribute must not be null and empty!" ],
+            "items" : {
+              "type" : "string"
+            }
+          }
+        }
+      },
+      "inline_response_200_5" : {
+        "type" : "object",
+        "properties" : {
+          "success" : {
+            "type" : "boolean",
+            "example" : true
+          },
+          "status" : {
+            "type" : "string",
+            "example" : "OK"
+          },
+          "data" : {
+            "$ref" : "#/components/schemas/Category"
+          }
+        }
+      },
+      "inline_response_404_4" : {
+        "type" : "object",
+        "properties" : {
+          "success" : {
+            "type" : "boolean",
+            "example" : true
+          },
+          "status" : {
+            "type" : "string",
+            "example" : "NOT_FOUND"
+          },
+          "message" : {
+            "type" : "string",
+            "example" : "Invalid thainguyen.domain.Category ID, thainguyen.domain.Category not found"
           }
         }
       },
@@ -2564,11 +2709,6 @@
         "required" : [ "name" ],
         "type" : "object",
         "properties" : {
-          "id" : {
-            "type" : "integer",
-            "description" : "The unique identifier for the category",
-            "format" : "int64"
-          },
           "name" : {
             "type" : "string",
             "description" : "The name of the category"
@@ -2582,36 +2722,43 @@
             "description" : "A description of the category"
           },
           "parent" : {
-            "type" : "integer",
-            "description" : "The id of the parent category",
-            "format" : "int64"
+            "$ref" : "#/components/schemas/Category"
           }
         }
       },
-      "categories_id_body_1" : {
+      "inline_response_200_6" : {
         "type" : "object",
         "properties" : {
-          "id" : {
-            "type" : "integer",
-            "description" : "The unique identifier for the category",
-            "format" : "int64"
+          "success" : {
+            "type" : "boolean",
+            "example" : true
           },
-          "name" : {
+          "status" : {
             "type" : "string",
-            "description" : "The name of the category"
+            "example" : "OK"
           },
-          "picture" : {
+          "data" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Product"
+            }
+          }
+        }
+      },
+      "inline_response_404_5" : {
+        "type" : "object",
+        "properties" : {
+          "success" : {
+            "type" : "boolean",
+            "example" : true
+          },
+          "status" : {
             "type" : "string",
-            "description" : "The URL or path to the category's picture"
+            "example" : "NOT_FOUND"
           },
-          "description" : {
+          "message" : {
             "type" : "string",
-            "description" : "A description of the category"
-          },
-          "parent" : {
-            "type" : "integer",
-            "description" : "The id of the parent category",
-            "format" : "int64"
+            "example" : "thainguyen.domain.Product not found"
           }
         }
       },
@@ -2632,19 +2779,55 @@
             "description" : "The picture of the product"
           },
           "brand" : {
-            "type" : "integer",
-            "description" : "the brand id",
-            "format" : "int64"
+            "$ref" : "#/components/schemas/Brand"
           },
           "category" : {
-            "type" : "integer",
-            "description" : "the category id",
-            "format" : "int64"
+            "$ref" : "#/components/schemas/Category"
+          }
+        }
+      },
+      "inline_response_201_3" : {
+        "type" : "object",
+        "properties" : {
+          "success" : {
+            "type" : "boolean",
+            "example" : true
+          },
+          "status" : {
+            "type" : "string",
+            "example" : "CREATED"
+          },
+          "message" : {
+            "type" : "string",
+            "example" : "Create Product success"
+          }
+        }
+      },
+      "inline_response_400_3" : {
+        "type" : "object",
+        "properties" : {
+          "success" : {
+            "type" : "boolean",
+            "example" : false
+          },
+          "status" : {
+            "type" : "string",
+            "example" : "BAD_REQUEST"
+          },
+          "message" : {
+            "type" : "string",
+            "example" : "Method argument not valid"
+          },
+          "errors" : {
+            "type" : "array",
+            "example" : [ "Name attribute must not be null and empty!", "brand: must not be null", "category: must not be null" ],
+            "items" : {
+              "type" : "string"
+            }
           }
         }
       },
       "products_id_body" : {
-        "required" : [ "brand", "category", "name" ],
         "type" : "object",
         "properties" : {
           "name" : {
@@ -2660,41 +2843,43 @@
             "description" : "The picture of the product"
           },
           "brand" : {
-            "type" : "integer",
-            "description" : "the brand id",
-            "format" : "int64"
+            "$ref" : "#/components/schemas/Brand"
           },
           "category" : {
-            "type" : "integer",
-            "description" : "the category id",
-            "format" : "int64"
+            "$ref" : "#/components/schemas/Category"
           }
         }
       },
-      "products_id_body_1" : {
+      "inline_response_200_7" : {
         "type" : "object",
         "properties" : {
-          "name" : {
+          "success" : {
+            "type" : "boolean",
+            "example" : true
+          },
+          "status" : {
             "type" : "string",
-            "description" : "The name of the product"
+            "example" : "OK"
           },
-          "description" : {
+          "data" : {
+            "$ref" : "#/components/schemas/Product"
+          }
+        }
+      },
+      "inline_response_404_6" : {
+        "type" : "object",
+        "properties" : {
+          "success" : {
+            "type" : "boolean",
+            "example" : true
+          },
+          "status" : {
             "type" : "string",
-            "description" : "The description of the product"
+            "example" : "NOT_FOUND"
           },
-          "picture" : {
+          "message" : {
             "type" : "string",
-            "description" : "The picture of the product"
-          },
-          "brand" : {
-            "type" : "integer",
-            "description" : "the brand id",
-            "format" : "int64"
-          },
-          "category" : {
-            "type" : "integer",
-            "description" : "the category id",
-            "format" : "int64"
+            "example" : "Invalid thainguyen.domain.Product ID, thainguyen.domain.Product not found"
           }
         }
       },
