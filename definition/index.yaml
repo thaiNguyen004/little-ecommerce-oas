@@ -2,7 +2,7 @@
   "openapi" : "3.0.3",
   "info" : {
     "title" : "SMS APIs",
-    "version" : "0.0.0"
+    "version" : "0.1.0"
   },
   "servers" : [ {
     "url" : "https://virtserver.swaggerhub.com/NGUYENNT11032004/SMS_OAS/1.0.0",
@@ -26,7 +26,7 @@
             }
           },
           "404" : {
-            "description" : "find all - fail(NOT_FOUND) - id not found in database",
+            "description" : "find all - fail(NOT_FOUND)",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -242,7 +242,7 @@
             }
           },
           "404" : {
-            "description" : "find all - fail(NOT_FOUND) - id not found in database",
+            "description" : "find all - fail(NOT_FOUND)",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -477,7 +477,7 @@
             }
           },
           "404" : {
-            "description" : "find all - fail(NOT_FOUND) - id not found in database",
+            "description" : "find all - fail(NOT_FOUND)",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -714,7 +714,7 @@
             }
           },
           "404" : {
-            "description" : "find all - fail(NOT_FOUND) - id not found in database",
+            "description" : "find all - fail(NOT_FOUND)",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -780,6 +780,16 @@
               }
             }
           },
+          "404" : {
+            "description" : "create a new Product - fail(NOT_FOUND) - id not found in database",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_404_2"
+                }
+              }
+            }
+          },
           "400" : {
             "description" : "create a new Product - fail(BAD_REQUEST) - info importance is null or blank",
             "content" : {
@@ -822,20 +832,34 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "Get Product by id success",
+            "description" : "find by id - success(OK)",
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Product"
+                  "$ref" : "#/components/schemas/inline_response_200_7"
                 }
               }
             }
           },
           "404" : {
-            "description" : "Product with that id not found in database"
+            "description" : "find by id - fail(NOT_FOUND) - id not found in database",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_404_6"
+                }
+              }
+            }
           },
           "401" : {
-            "description" : "Unauthorized"
+            "description" : "find by id - fail(UNAUTHORIZED) - not login",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_401"
+                }
+              }
+            }
           }
         },
         "security" : [ {
@@ -927,23 +951,34 @@
         "summary" : "Find all detailproducts",
         "responses" : {
           "200" : {
-            "description" : "Get all detailproducts success",
+            "description" : "find all - success(OK)",
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "type" : "array",
-                  "items" : {
-                    "$ref" : "#/components/schemas/DetailProduct"
-                  }
+                  "$ref" : "#/components/schemas/inline_response_200_8"
                 }
               }
             }
           },
           "404" : {
-            "description" : "Not found detail product"
+            "description" : "find all - fail(NOT_FOUND)",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_404_7"
+                }
+              }
+            }
           },
           "401" : {
-            "description" : "Unauthorized"
+            "description" : "find all - fail(UNAUTHORIZED) - not login",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_401"
+                }
+              }
+            }
           }
         },
         "security" : [ {
@@ -964,7 +999,7 @@
         },
         "responses" : {
           "201" : {
-            "description" : "Create DetailProduct success",
+            "description" : "create a new DetailProduct - success(CREATED)",
             "headers" : {
               "Location" : {
                 "style" : "simple",
@@ -973,19 +1008,54 @@
                   "type" : "string"
                 }
               }
+            },
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_201_4"
+                }
+              }
             }
           },
           "403" : {
-            "description" : "Forbiden because cridential info is bad"
+            "description" : "create a new DetailProduct - fail(FORBIDDEN) - because credential info is bad",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_403"
+                }
+              }
+            }
           },
           "400" : {
-            "description" : "required fields must not be null"
+            "description" : "create a new DetailProduct - fail(BAD_REQUEST) - info importance is null or blank",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_400_4"
+                }
+              }
+            }
           },
-          "422" : {
-            "description" : "Unprocessable entity due when create detailProduct that size or product not found"
+          "404" : {
+            "description" : "create a new DetailProduct - fail(NOT_FOUND) - id product or id size not found in database",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_404_6"
+                }
+              }
+            }
           },
           "401" : {
-            "description" : "Unauthorized"
+            "description" : "create a new DetailProduct - fail(UNAUTHORIZED) - not login",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_401"
+                }
+              }
+            }
           }
         },
         "security" : [ {
@@ -1009,20 +1079,34 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "Get Detail Product by id success",
+            "description" : "find by id - success(OK)",
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/DetailProduct"
+                  "$ref" : "#/components/schemas/inline_response_200_9"
                 }
               }
             }
           },
           "404" : {
-            "description" : "Detail Product with that id not found in database"
+            "description" : "find by id - fail(NOT_FOUND) - id not found in database",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_404_8"
+                }
+              }
+            }
           },
           "401" : {
-            "description" : "Unauthorized"
+            "description" : "find by id - fail(UNAUTHORIZED) - not login",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_401"
+                }
+              }
+            }
           }
         },
         "security" : [ {
@@ -1054,80 +1138,54 @@
         },
         "responses" : {
           "200" : {
-            "description" : "Update Detail Product success",
+            "description" : "update Detail Product - success(OK)",
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/DetailProduct"
+                  "$ref" : "#/components/schemas/inline_response_200_9"
                 }
               }
             }
           },
           "400" : {
-            "description" : "fields required must not be null"
-          },
-          "404" : {
-            "description" : "Detail Product with that id not found in database"
-          },
-          "422" : {
-            "description" : "Unprocessable entity due when put detail product that size or product not found"
-          },
-          "403" : {
-            "description" : "Forbiden because cridential info is bad"
-          },
-          "401" : {
-            "description" : "Unauthorized"
-          }
-        },
-        "security" : [ {
-          "basicAuth" : [ ]
-        } ]
-      },
-      "patch" : {
-        "summary" : "Update Detail Product by patch",
-        "parameters" : [ {
-          "name" : "id",
-          "in" : "path",
-          "description" : "ID of the Product",
-          "required" : true,
-          "style" : "simple",
-          "explode" : false,
-          "schema" : {
-            "type" : "integer"
-          }
-        } ],
-        "requestBody" : {
-          "content" : {
-            "application/json" : {
-              "schema" : {
-                "$ref" : "#/components/schemas/detailproducts_id_body_1"
-              }
-            }
-          },
-          "required" : true
-        },
-        "responses" : {
-          "200" : {
-            "description" : "Update Detail Product success",
+            "description" : "update Product - fail(BAD_REQUEST) - info importance is null or blank",
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/DetailProduct"
+                  "$ref" : "#/components/schemas/inline_response_400_1"
                 }
               }
             }
           },
           "404" : {
-            "description" : "Product with that id not found in database"
-          },
-          "422" : {
-            "description" : "Unprocessable entity due when put product that brand or category not found"
+            "description" : "update Detail Product - fail(NOT_FOUND) - id not found in database",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_404_9"
+                }
+              }
+            }
           },
           "403" : {
-            "description" : "Forbiden because cridential info is bad"
+            "description" : "update Detail Product - fail(FORBIDDEN) - because credential info is bad",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_403"
+                }
+              }
+            }
           },
           "401" : {
-            "description" : "Unauthorized"
+            "description" : "update Detail Product - fail(UNAUTHORIZED) - not login",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_401"
+                }
+              }
+            }
           }
         },
         "security" : [ {
@@ -1140,23 +1198,34 @@
         "summary" : "Find all orders status [SUCCESS, PENDING] and owned",
         "responses" : {
           "200" : {
-            "description" : "Get all orders success",
+            "description" : "find all - success(OK)",
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "type" : "array",
-                  "items" : {
-                    "$ref" : "#/components/schemas/Order"
-                  }
+                  "$ref" : "#/components/schemas/inline_response_200_10"
                 }
               }
             }
           },
           "404" : {
-            "description" : "Not found orders"
+            "description" : "find all - fail(NOT_FOUND)",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_404_10"
+                }
+              }
+            }
           },
           "401" : {
-            "description" : "Unauthorized"
+            "description" : "find all - fail(UNAUTHORIZED) - not login",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_401"
+                }
+              }
+            }
           }
         },
         "security" : [ {
@@ -1177,7 +1246,7 @@
         },
         "responses" : {
           "201" : {
-            "description" : "Create Order success",
+            "description" : "create a new Order - success(CREATED)",
             "headers" : {
               "Location" : {
                 "style" : "simple",
@@ -1186,16 +1255,54 @@
                   "type" : "string"
                 }
               }
+            },
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_201_5"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "create a new Product - fail(FORBIDDEN) - because credential info is bad",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_403"
+                }
+              }
             }
           },
           "400" : {
-            "description" : "required fields must not be null"
+            "description" : "create a new Order - fail(BAD_REQUEST) - info importance is null or blank",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_400_5"
+                }
+              }
+            }
           },
-          "422" : {
-            "description" : "Unprocessable entity due when create order that discount or detail product not found"
+          "404" : {
+            "description" : "create a new Order - fail(NOT_FOUND) - id not found in database",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_404_11"
+                }
+              }
+            }
           },
           "401" : {
-            "description" : "Unauthorized"
+            "description" : "create a new Order - fail(UNAUTHORIZED) - not login",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_401"
+                }
+              }
+            }
           }
         },
         "security" : [ {
@@ -1219,122 +1326,92 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "Get all orders success",
+            "description" : "find by id - success(OK)",
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "type" : "array",
-                  "items" : {
-                    "$ref" : "#/components/schemas/Order"
-                  }
+                  "$ref" : "#/components/schemas/inline_response_200_11"
                 }
               }
             }
           },
           "404" : {
-            "description" : "Order with that id not found in database"
+            "description" : "find by id - fail(NOT_FOUND) - id not found in database",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_404_12"
+                }
+              }
+            }
           },
           "401" : {
-            "description" : "Unauthorized"
+            "description" : "find by id - fail(UNAUTHORIZED) - not login",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_401"
+                }
+              }
+            }
           }
         },
         "security" : [ {
           "basicAuth" : [ ]
         } ]
-      },
+      }
+    },
+    "/orders/cancel" : {
       "put" : {
         "summary" : "cancel order [can only cancel orders with status PENDING]",
         "parameters" : [ {
-          "name" : "id",
-          "in" : "path",
-          "description" : "ID of the Product",
+          "name" : "order_id",
+          "in" : "query",
+          "description" : "ID of the order to be canceled",
           "required" : true,
-          "style" : "simple",
-          "explode" : false,
+          "style" : "form",
+          "explode" : true,
           "schema" : {
             "type" : "integer"
           }
         } ],
         "responses" : {
-          "422" : {
-            "description" : "Unprocessable entity",
+          "200" : {
+            "description" : "cancel Order - success(OK)",
             "content" : {
               "application/json" : {
-                "examples" : {
-                  "example-1" : {
-                    "description" : "Failed due order has delivered successfully",
-                    "value" : {
-                      "success" : false,
-                      "message" : "Order with id 123 can't cancellable because order has delivered successfully",
-                      "status_code" : 422
-                    }
-                  },
-                  "example-2" : {
-                    "description" : "Failed due order is delivery processing",
-                    "value" : {
-                      "success" : false,
-                      "message" : "Order with id 123 can't cancellable because order is delivery processing",
-                      "status_code" : 422
-                    }
-                  },
-                  "example-3" : {
-                    "description" : "Failed due cancelled before",
-                    "value" : {
-                      "success" : false,
-                      "message" : "Order with id 123 has cancelled before",
-                      "status_code" : 422
-                    }
-                  },
-                  "example-4" : {
-                    "description" : "Failed due not yet supported with status order",
-                    "value" : {
-                      "success" : false,
-                      "message" : "not yet supported with status order",
-                      "status_code" : 422
-                    }
-                  },
-                  "example-5" : {
-                    "description" : "Failed due error unexpected",
-                    "value" : {
-                      "success" : false,
-                      "message" : "Order with id 123 face unexpected error",
-                      "status_code" : 422
-                    }
-                  }
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200_12"
                 }
               }
             }
           },
-          "200" : {
-            "description" : "Cancel success",
+          "422" : {
+            "description" : "cancel order - fail(UNPROCESSABLE_ENTITY) - order has delivered successfully",
             "content" : {
               "application/json" : {
-                "examples" : {
-                  "example-1" : {
-                    "description" : "Success",
-                    "value" : {
-                      "success" : true,
-                      "message" : "Order with id 123 cancel success",
-                      "status_code" : 200
-                    }
-                  }
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_422"
                 }
               }
             }
           },
           "404" : {
-            "description" : "Cancel faild due Order id not found / not own",
+            "description" : "cancel order - fail(NOT_FOUND) - id not found in database",
             "content" : {
               "application/json" : {
-                "examples" : {
-                  "example-1" : {
-                    "description" : "Not found",
-                    "value" : {
-                      "success" : false,
-                      "message" : "Order with id cancel success",
-                      "status_code" : 404
-                    }
-                  }
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_404_13"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "cancel order - fail(UNAUTHORIZED) - not login",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_401"
                 }
               }
             }
@@ -1350,23 +1427,34 @@
         "summary" : "Find all sizes",
         "responses" : {
           "200" : {
-            "description" : "Get all sizes success",
+            "description" : "find all - success(OK)",
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "type" : "array",
-                  "items" : {
-                    "$ref" : "#/components/schemas/Size"
-                  }
+                  "$ref" : "#/components/schemas/inline_response_200_13"
                 }
               }
             }
           },
           "404" : {
-            "description" : "Not found sizes"
+            "description" : "find all - fail(NOT_FOUND)",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_404_14"
+                }
+              }
+            }
           },
           "401" : {
-            "description" : "Unauthorized"
+            "description" : "find all - fail(UNAUTHORIZED) - not login",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_401"
+                }
+              }
+            }
           }
         },
         "security" : [ {
@@ -1387,7 +1475,7 @@
         },
         "responses" : {
           "201" : {
-            "description" : "Create Size success",
+            "description" : "create a new Size - success(CREATED)",
             "headers" : {
               "Location" : {
                 "style" : "simple",
@@ -1396,19 +1484,54 @@
                   "type" : "string"
                 }
               }
+            },
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_201_6"
+                }
+              }
             }
           },
           "403" : {
-            "description" : "Forbiden because cridential info is bad"
+            "description" : "create a new Size - fail(FORBIDDEN) - because credential info is bad",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_403"
+                }
+              }
+            }
           },
           "400" : {
-            "description" : "required fields must not be null"
+            "description" : "create a new Size - fail(BAD_REQUEST) - info importance is null or blank",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_400_6"
+                }
+              }
+            }
           },
-          "422" : {
-            "description" : "Unprocessable entity due when create Size that brand or category not found"
+          "404" : {
+            "description" : "create a new DetailProduct - fail(NOT_FOUND) - id product or id size not found in database",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_404_4"
+                }
+              }
+            }
           },
           "401" : {
-            "description" : "Unauthorized"
+            "description" : "create a new Size - fail(UNAUTHORIZED) - not login",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_401"
+                }
+              }
+            }
           }
         },
         "security" : [ {
@@ -1432,20 +1555,34 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "Get Size by id success",
+            "description" : "find by id - success(OK)",
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Size"
+                  "$ref" : "#/components/schemas/inline_response_200_14"
                 }
               }
             }
           },
           "404" : {
-            "description" : "Size with that id not found in database"
+            "description" : "find by id - fail(NOT_FOUND) - id not found in database",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_404_15"
+                }
+              }
+            }
           },
           "401" : {
-            "description" : "Unauthorized"
+            "description" : "find by id - fail(UNAUTHORIZED) - not login",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_401"
+                }
+              }
+            }
           }
         },
         "security" : [ {
@@ -1453,7 +1590,7 @@
         } ]
       },
       "put" : {
-        "summary" : "Update Size by put",
+        "summary" : "Update Size",
         "parameters" : [ {
           "name" : "id",
           "in" : "path",
@@ -1477,80 +1614,54 @@
         },
         "responses" : {
           "200" : {
-            "description" : "Update Size success",
+            "description" : "update Size - success(OK)",
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Size"
+                  "$ref" : "#/components/schemas/inline_response_200_14"
                 }
               }
             }
           },
           "400" : {
-            "description" : "fields required must not be null"
-          },
-          "404" : {
-            "description" : "Size with that id not found in database"
-          },
-          "422" : {
-            "description" : "Unprocessable entity due when put Size that brand or category not found"
-          },
-          "403" : {
-            "description" : "Forbiden because cridential info is bad"
-          },
-          "401" : {
-            "description" : "Unauthorized"
-          }
-        },
-        "security" : [ {
-          "basicAuth" : [ ]
-        } ]
-      },
-      "patch" : {
-        "summary" : "Update Size by patch",
-        "parameters" : [ {
-          "name" : "id",
-          "in" : "path",
-          "description" : "ID of the Size",
-          "required" : true,
-          "style" : "simple",
-          "explode" : false,
-          "schema" : {
-            "type" : "integer"
-          }
-        } ],
-        "requestBody" : {
-          "content" : {
-            "application/json" : {
-              "schema" : {
-                "$ref" : "#/components/schemas/sizes_id_body_1"
-              }
-            }
-          },
-          "required" : true
-        },
-        "responses" : {
-          "200" : {
-            "description" : "Update Size success",
+            "description" : "update Size - fail(BAD_REQUEST) - info importance is null or blank",
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Size"
+                  "$ref" : "#/components/schemas/inline_response_400_1"
                 }
               }
             }
           },
           "404" : {
-            "description" : "Size with that id not found in database"
-          },
-          "422" : {
-            "description" : "Unprocessable entity due when put Size that brand or category not found"
+            "description" : "update Size - fail(NOT_FOUND) - id not found in database",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_404_4"
+                }
+              }
+            }
           },
           "403" : {
-            "description" : "Forbiden because cridential info is bad"
+            "description" : "update Size - fail(FORBIDDEN) - because credential info is bad",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_403"
+                }
+              }
+            }
           },
           "401" : {
-            "description" : "Unauthorized"
+            "description" : "update Size - fail(UNAUTHORIZED) - not login",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_401"
+                }
+              }
+            }
           }
         },
         "security" : [ {
@@ -1563,23 +1674,34 @@
         "summary" : "Find all discounts",
         "responses" : {
           "200" : {
-            "description" : "Get all discounts success",
+            "description" : "find all - success(OK)",
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "type" : "array",
-                  "items" : {
-                    "$ref" : "#/components/schemas/Discount"
-                  }
+                  "$ref" : "#/components/schemas/inline_response_200_15"
                 }
               }
             }
           },
           "404" : {
-            "description" : "Not found discounts"
+            "description" : "find all - fail(NOT_FOUND)",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_404_16"
+                }
+              }
+            }
           },
           "401" : {
-            "description" : "Unauthorized"
+            "description" : "find all - fail(UNAUTHORIZED) - not login",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_401"
+                }
+              }
+            }
           }
         },
         "security" : [ {
@@ -1600,7 +1722,7 @@
         },
         "responses" : {
           "201" : {
-            "description" : "Create discount success",
+            "description" : "create a new discount - success(CREATED)",
             "headers" : {
               "Location" : {
                 "style" : "simple",
@@ -1609,19 +1731,62 @@
                   "type" : "string"
                 }
               }
+            },
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_201_7"
+                }
+              }
             }
           },
           "403" : {
-            "description" : "Forbiden because cridential info is bad"
+            "description" : "create a new discount - fail(FORBIDDEN) - because credential info is bad",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_403"
+                }
+              }
+            }
           },
           "400" : {
-            "description" : "required fields must not be null"
-          },
-          "422" : {
-            "description" : "Unprocessable entity due due percent > 100 or (perccent or amount < 1)"
+            "description" : "create a new discount - fail(BAD_REQUEST) - info importance is null or blank",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_400_7"
+                },
+                "examples" : {
+                  "missingCode" : {
+                    "value" : {
+                      "success" : false,
+                      "status" : "BAD_REQUEST",
+                      "message" : "Method argument not valid",
+                      "errors" : [ "Code attribute must not be null or empty!" ]
+                    }
+                  },
+                  "invalidDiscountValue" : {
+                    "value" : {
+                      "success" : false,
+                      "status" : "BAD_REQUEST",
+                      "message" : "Method argument not valid",
+                      "errors" : [ "Discount value must not greater than 100%" ]
+                    }
+                  }
+                }
+              }
+            }
           },
           "401" : {
-            "description" : "Unauthorized"
+            "description" : "create a new discount - fail(UNAUTHORIZED) - not login",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_401"
+                }
+              }
+            }
           }
         },
         "security" : [ {
@@ -1645,20 +1810,34 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "Get discount by id success",
+            "description" : "find by id - success(OK)",
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Discount"
+                  "$ref" : "#/components/schemas/inline_response_200_16"
                 }
               }
             }
           },
           "404" : {
-            "description" : "discount with that id not found in database"
+            "description" : "find by id - fail(NOT_FOUND) - id not found in database",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_404_17"
+                }
+              }
+            }
           },
           "401" : {
-            "description" : "Unauthorized"
+            "description" : "find by id - fail(UNAUTHORIZED) - not login",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_401"
+                }
+              }
+            }
           }
         },
         "security" : [ {
@@ -1666,7 +1845,7 @@
         } ]
       },
       "put" : {
-        "summary" : "Update discount by put",
+        "summary" : "Update discount",
         "parameters" : [ {
           "name" : "id",
           "in" : "path",
@@ -1690,80 +1869,62 @@
         },
         "responses" : {
           "200" : {
-            "description" : "Update discount success",
+            "description" : "update a discount - success(OK)",
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Discount"
+                  "$ref" : "#/components/schemas/inline_response_200_17"
                 }
               }
             }
           },
           "400" : {
-            "description" : "fields required must not be null"
-          },
-          "404" : {
-            "description" : "discount with that id not found in database"
-          },
-          "422" : {
-            "description" : "Unprocessable entity due percent > 100 or (perccent or amount < 1)"
-          },
-          "403" : {
-            "description" : "Forbiden because cridential info is bad"
-          },
-          "401" : {
-            "description" : "Unauthorized"
-          }
-        },
-        "security" : [ {
-          "basicAuth" : [ ]
-        } ]
-      },
-      "patch" : {
-        "summary" : "Update discount by patch",
-        "parameters" : [ {
-          "name" : "id",
-          "in" : "path",
-          "description" : "ID of the discount",
-          "required" : true,
-          "style" : "simple",
-          "explode" : false,
-          "schema" : {
-            "type" : "integer"
-          }
-        } ],
-        "requestBody" : {
-          "content" : {
-            "application/json" : {
-              "schema" : {
-                "$ref" : "#/components/schemas/discounts_id_body_1"
-              }
-            }
-          },
-          "required" : true
-        },
-        "responses" : {
-          "200" : {
-            "description" : "Update discount success",
+            "description" : "update a discount - fail(BAD_REQUEST) - info importance is null or blank",
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Discount"
+                  "$ref" : "#/components/schemas/inline_response_400_7"
+                },
+                "examples" : {
+                  "missingCode" : {
+                    "value" : {
+                      "success" : false,
+                      "status" : "BAD_REQUEST",
+                      "message" : "Method argument not valid",
+                      "errors" : [ "code: Code attribute must not be null or empty!" ]
+                    }
+                  },
+                  "invalidDiscountValue" : {
+                    "value" : {
+                      "success" : false,
+                      "status" : "BAD_REQUEST",
+                      "message" : "Method argument not valid",
+                      "errors" : [ "Discount value must not greater than 100%" ]
+                    }
+                  }
                 }
               }
             }
           },
-          "404" : {
-            "description" : "discount with that id not found in database"
-          },
-          "422" : {
-            "description" : "Unprocessable entity due percent > 100 or (perccent or amount < 1)"
-          },
           "403" : {
-            "description" : "Forbiden because cridential info is bad"
+            "description" : "update a discount - fail(FORBIDDEN) - because credential info is bad",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_403"
+                }
+              }
+            }
           },
           "401" : {
-            "description" : "Unauthorized"
+            "description" : "update a discount - fail(UNAUTHORIZED) - not login",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_401"
+                }
+              }
+            }
           }
         },
         "security" : [ {
@@ -2827,29 +2988,6 @@
           }
         }
       },
-      "products_id_body" : {
-        "type" : "object",
-        "properties" : {
-          "name" : {
-            "type" : "string",
-            "description" : "The name of the product"
-          },
-          "description" : {
-            "type" : "string",
-            "description" : "The description of the product"
-          },
-          "picture" : {
-            "type" : "string",
-            "description" : "The picture of the product"
-          },
-          "brand" : {
-            "$ref" : "#/components/schemas/Brand"
-          },
-          "category" : {
-            "$ref" : "#/components/schemas/Category"
-          }
-        }
-      },
       "inline_response_200_7" : {
         "type" : "object",
         "properties" : {
@@ -2883,109 +3021,288 @@
           }
         }
       },
+      "products_id_body" : {
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string",
+            "description" : "The name of the product"
+          },
+          "description" : {
+            "type" : "string",
+            "description" : "The description of the product"
+          },
+          "picture" : {
+            "type" : "string",
+            "description" : "The picture of the product"
+          },
+          "brand" : {
+            "$ref" : "#/components/schemas/Brand"
+          },
+          "category" : {
+            "$ref" : "#/components/schemas/Category"
+          }
+        }
+      },
+      "inline_response_200_8" : {
+        "type" : "object",
+        "properties" : {
+          "success" : {
+            "type" : "boolean",
+            "example" : true
+          },
+          "status" : {
+            "type" : "string",
+            "example" : "OK"
+          },
+          "data" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/DetailProduct"
+            }
+          }
+        }
+      },
+      "inline_response_404_7" : {
+        "type" : "object",
+        "properties" : {
+          "success" : {
+            "type" : "boolean",
+            "example" : true
+          },
+          "status" : {
+            "type" : "string",
+            "example" : "NOT_FOUND"
+          },
+          "message" : {
+            "type" : "string",
+            "example" : "thainguyen.domain.DetailProduct not found"
+          }
+        }
+      },
+      "detailproducts_size" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "description" : "The unique identifier for the size",
+            "format" : "int64"
+          }
+        }
+      },
+      "detailproducts_product" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "description" : "The unique identifier for the produc",
+            "format" : "int64"
+          }
+        }
+      },
       "detailproducts_body" : {
         "required" : [ "name", "price", "product", "size", "weight" ],
         "type" : "object",
         "properties" : {
           "name" : {
-            "type" : "string"
+            "type" : "string",
+            "description" : "the name of the detail product"
+          },
+          "size" : {
+            "$ref" : "#/components/schemas/detailproducts_size"
           },
           "product" : {
-            "$ref" : "#/components/schemas/Product"
+            "$ref" : "#/components/schemas/detailproducts_product"
           },
           "price" : {
-            "$ref" : "#/components/schemas/Price"
+            "type" : "integer",
+            "description" : "the price of the detail product"
           },
           "weight" : {
             "type" : "number",
             "description" : "weight of detail product",
             "format" : "float"
+          }
+        }
+      },
+      "inline_response_201_4" : {
+        "type" : "object",
+        "properties" : {
+          "success" : {
+            "type" : "boolean",
+            "example" : true
           },
-          "size" : {
-            "$ref" : "#/components/schemas/Size"
+          "status" : {
+            "type" : "string",
+            "example" : "CREATED"
+          },
+          "message" : {
+            "type" : "string",
+            "example" : "Create Detail Product success"
+          }
+        }
+      },
+      "inline_response_400_4" : {
+        "type" : "object",
+        "properties" : {
+          "success" : {
+            "type" : "boolean",
+            "example" : false
+          },
+          "status" : {
+            "type" : "string",
+            "example" : "BAD_REQUEST"
+          },
+          "message" : {
+            "type" : "string",
+            "example" : "Method argument not valid"
+          },
+          "errors" : {
+            "type" : "array",
+            "example" : [ "name: Name attribute must not be null and empty!", "product: Product attribute must not be null" ],
+            "items" : {
+              "type" : "string"
+            }
+          }
+        }
+      },
+      "inline_response_200_9" : {
+        "type" : "object",
+        "properties" : {
+          "success" : {
+            "type" : "boolean",
+            "example" : true
+          },
+          "status" : {
+            "type" : "string",
+            "example" : "OK"
+          },
+          "data" : {
+            "$ref" : "#/components/schemas/DetailProduct"
+          }
+        }
+      },
+      "inline_response_404_8" : {
+        "type" : "object",
+        "properties" : {
+          "success" : {
+            "type" : "boolean",
+            "example" : true
+          },
+          "status" : {
+            "type" : "string",
+            "example" : "NOT_FOUND"
+          },
+          "message" : {
+            "type" : "string",
+            "example" : "Invalid thainguyen.domain.DetailProduct ID, thainguyen.domain.DetailProduct not found"
           }
         }
       },
       "detailproducts_id_body" : {
-        "required" : [ "name", "price", "product", "size", "weight" ],
         "type" : "object",
         "properties" : {
           "name" : {
-            "type" : "string"
+            "type" : "string",
+            "description" : "the name of the detail product"
+          },
+          "size" : {
+            "$ref" : "#/components/schemas/detailproducts_size"
           },
           "product" : {
-            "$ref" : "#/components/schemas/Product"
+            "$ref" : "#/components/schemas/detailproducts_product"
           },
           "price" : {
-            "$ref" : "#/components/schemas/Price"
+            "type" : "integer",
+            "description" : "the price of the detail product"
           },
           "weight" : {
             "type" : "number",
             "description" : "weight of detail product",
             "format" : "float"
-          },
-          "size" : {
-            "$ref" : "#/components/schemas/Size"
           }
         }
       },
-      "detailproducts_id_body_1" : {
+      "inline_response_404_9" : {
         "type" : "object",
         "properties" : {
-          "name" : {
-            "type" : "string"
+          "success" : {
+            "type" : "boolean",
+            "example" : true
           },
-          "product" : {
-            "$ref" : "#/components/schemas/Product"
+          "status" : {
+            "type" : "string",
+            "example" : "NOT_FOUND"
           },
-          "price" : {
-            "$ref" : "#/components/schemas/Price"
-          },
-          "weight" : {
-            "type" : "number",
-            "description" : "weight of detail product",
-            "format" : "float"
-          },
-          "size" : {
-            "$ref" : "#/components/schemas/Size"
+          "message" : {
+            "type" : "string",
+            "example" : "[\"Invalid thainguyen.domain.DetailProduct ID, thainguyen.domain.DetailProduct not found\",\"Invalid thainguyen.domain.Size ID, thainguyen.domain.Size not found\"]"
           }
         }
       },
-      "orders_address" : {
-        "required" : [ "detailAddress", "district", "phoneNumber", "province", "ward" ],
+      "inline_response_200_10" : {
         "type" : "object",
         "properties" : {
-          "phoneNumber" : {
-            "maxLength" : 10,
-            "minLength" : 10,
-            "type" : "string"
+          "success" : {
+            "type" : "boolean",
+            "example" : true
           },
-          "province" : {
-            "type" : "string"
+          "status" : {
+            "type" : "string",
+            "example" : "OK"
           },
-          "district" : {
-            "type" : "string"
-          },
-          "ward" : {
-            "type" : "string"
-          },
-          "detailAddress" : {
-            "type" : "string"
+          "data" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Order"
+            }
           }
-        },
-        "description" : "the address of buyer"
+        }
+      },
+      "inline_response_404_10" : {
+        "type" : "object",
+        "properties" : {
+          "success" : {
+            "type" : "boolean",
+            "example" : true
+          },
+          "status" : {
+            "type" : "string",
+            "example" : "NOT_FOUND"
+          },
+          "message" : {
+            "type" : "string",
+            "example" : "Order placed by admin not found"
+          }
+        }
+      },
+      "orders_detailProduct" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "description" : "the identifier of the detail product"
+          }
+        }
       },
       "orders_lineItems" : {
-        "required" : [ "detailProductId", "quantity" ],
         "type" : "object",
         "properties" : {
-          "detailProductId" : {
-            "type" : "integer",
-            "format" : "int64"
-          },
           "quantity" : {
             "type" : "integer",
-            "description" : "number of detailproduct for one lineitem"
+            "description" : "the quantity of the detail product"
+          },
+          "detailProduct" : {
+            "$ref" : "#/components/schemas/orders_detailProduct"
+          }
+        }
+      },
+      "orders_discounts" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "description" : "the identifier of the discount"
           }
         }
       },
@@ -2993,21 +3310,216 @@
         "required" : [ "address", "lineItems" ],
         "type" : "object",
         "properties" : {
-          "address" : {
-            "$ref" : "#/components/schemas/orders_address"
-          },
-          "discounts" : {
-            "type" : "array",
-            "description" : "array of the discount id",
-            "items" : {
-              "type" : "integer"
-            }
-          },
           "lineItems" : {
             "type" : "array",
             "items" : {
               "$ref" : "#/components/schemas/orders_lineItems"
             }
+          },
+          "address" : {
+            "$ref" : "#/components/schemas/Address"
+          },
+          "discounts" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/orders_discounts"
+            }
+          }
+        }
+      },
+      "inline_response_201_5" : {
+        "type" : "object",
+        "properties" : {
+          "success" : {
+            "type" : "boolean",
+            "example" : true
+          },
+          "status" : {
+            "type" : "string",
+            "example" : "CREATED"
+          },
+          "message" : {
+            "type" : "string",
+            "example" : "Create Order success"
+          }
+        }
+      },
+      "inline_response_400_5" : {
+        "type" : "object",
+        "properties" : {
+          "success" : {
+            "type" : "boolean",
+            "example" : false
+          },
+          "status" : {
+            "type" : "string",
+            "example" : "BAD_REQUEST"
+          },
+          "message" : {
+            "type" : "string",
+            "example" : "Method argument not valid"
+          },
+          "errors" : {
+            "type" : "array",
+            "example" : [ "address: address of the order must not be null" ],
+            "items" : {
+              "type" : "string"
+            }
+          }
+        }
+      },
+      "inline_response_404_11" : {
+        "type" : "object",
+        "properties" : {
+          "success" : {
+            "type" : "boolean",
+            "example" : true
+          },
+          "status" : {
+            "type" : "string",
+            "example" : "NOT_FOUND"
+          },
+          "message" : {
+            "type" : "string",
+            "example" : "[\"Invalid thainguyen.domain.Discount ID, thainguyen.domain.Discount not found\",\"Invalid thainguyen.domain.DetailProduct ID, thainguyen.domain.DetailProduct not found\"]"
+          }
+        }
+      },
+      "inline_response_200_11" : {
+        "type" : "object",
+        "properties" : {
+          "success" : {
+            "type" : "boolean",
+            "example" : true
+          },
+          "status" : {
+            "type" : "string",
+            "example" : "OK"
+          },
+          "data" : {
+            "$ref" : "#/components/schemas/Order"
+          }
+        }
+      },
+      "inline_response_404_12" : {
+        "type" : "object",
+        "properties" : {
+          "success" : {
+            "type" : "boolean",
+            "example" : true
+          },
+          "status" : {
+            "type" : "string",
+            "example" : "NOT_FOUND"
+          },
+          "message" : {
+            "type" : "string",
+            "example" : "Invalid thainguyen.domain.Order ID, thainguyen.domain.Order not found"
+          }
+        }
+      },
+      "inline_response_200_12" : {
+        "type" : "object",
+        "properties" : {
+          "success" : {
+            "type" : "boolean",
+            "example" : true
+          },
+          "status" : {
+            "type" : "string",
+            "example" : "OK"
+          },
+          "message" : {
+            "type" : "string",
+            "example" : "Order with id 123 cancel success"
+          }
+        }
+      },
+      "inline_response_422" : {
+        "type" : "object",
+        "properties" : {
+          "success" : {
+            "type" : "boolean",
+            "example" : false
+          },
+          "status" : {
+            "type" : "string",
+            "example" : "UNPROCESSABLE_ENTITY"
+          },
+          "message" : {
+            "type" : "string",
+            "example" : "Order with id 123 can't cancellable because order has delivered successfully"
+          }
+        }
+      },
+      "inline_response_404_13" : {
+        "type" : "object",
+        "properties" : {
+          "success" : {
+            "type" : "boolean",
+            "example" : false
+          },
+          "status" : {
+            "type" : "string",
+            "example" : "NOT_FOUND"
+          },
+          "message" : {
+            "type" : "string",
+            "example" : "[\"Order with id 123 not exist\"]"
+          }
+        }
+      },
+      "inline_response_200_13" : {
+        "type" : "object",
+        "properties" : {
+          "success" : {
+            "type" : "boolean",
+            "example" : true
+          },
+          "status" : {
+            "type" : "string",
+            "example" : "OK"
+          },
+          "data" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Size"
+            }
+          }
+        }
+      },
+      "inline_response_404_14" : {
+        "type" : "object",
+        "properties" : {
+          "success" : {
+            "type" : "boolean",
+            "example" : true
+          },
+          "status" : {
+            "type" : "string",
+            "example" : "NOT_FOUND"
+          },
+          "message" : {
+            "type" : "string",
+            "example" : "thainguyen.domain.Size not found"
+          }
+        }
+      },
+      "sizes_brand" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "description" : "The identifier of the Brand"
+          }
+        }
+      },
+      "sizes_category" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "description" : "The identifier of the Category"
           }
         }
       },
@@ -3016,12 +3528,10 @@
         "type" : "object",
         "properties" : {
           "brand" : {
-            "type" : "integer",
-            "description" : "The identifier of the Brand"
+            "$ref" : "#/components/schemas/sizes_brand"
           },
           "category" : {
-            "type" : "integer",
-            "description" : "The identifier of the Category"
+            "$ref" : "#/components/schemas/sizes_category"
           },
           "name" : {
             "type" : "string",
@@ -3039,20 +3549,91 @@
           "width" : {
             "type" : "integer",
             "description" : "The width measurement of the size"
+          }
+        }
+      },
+      "inline_response_201_6" : {
+        "type" : "object",
+        "properties" : {
+          "success" : {
+            "type" : "boolean",
+            "example" : true
+          },
+          "status" : {
+            "type" : "string",
+            "example" : "CREATED"
+          },
+          "message" : {
+            "type" : "string",
+            "example" : "Create Size success"
+          }
+        }
+      },
+      "inline_response_400_6" : {
+        "type" : "object",
+        "properties" : {
+          "success" : {
+            "type" : "boolean",
+            "example" : false
+          },
+          "status" : {
+            "type" : "string",
+            "example" : "BAD_REQUEST"
+          },
+          "message" : {
+            "type" : "string",
+            "example" : "Method argument not valid"
+          },
+          "errors" : {
+            "type" : "array",
+            "example" : [ "name: Name attribute must not be null and empty!" ],
+            "items" : {
+              "type" : "string"
+            }
+          }
+        }
+      },
+      "inline_response_200_14" : {
+        "type" : "object",
+        "properties" : {
+          "success" : {
+            "type" : "boolean",
+            "example" : true
+          },
+          "status" : {
+            "type" : "string",
+            "example" : "OK"
+          },
+          "data" : {
+            "$ref" : "#/components/schemas/Size"
+          }
+        }
+      },
+      "inline_response_404_15" : {
+        "type" : "object",
+        "properties" : {
+          "success" : {
+            "type" : "boolean",
+            "example" : true
+          },
+          "status" : {
+            "type" : "string",
+            "example" : "NOT_FOUND"
+          },
+          "message" : {
+            "type" : "string",
+            "example" : "Invalid thainguyen.domain.Size ID, thainguyen.domain.Size not found"
           }
         }
       },
       "sizes_id_body" : {
-        "required" : [ "brand", "category", "chest", "length", "name", "width" ],
         "type" : "object",
         "properties" : {
           "brand" : {
-            "type" : "integer",
-            "description" : "The identifier of the Brand"
+            "$ref" : "#/components/schemas/sizes_brand"
           },
           "category" : {
-            "type" : "integer",
-            "description" : "The identifier of the Category"
+            "$ref" : "#/components/schemas/sizes_category"
           },
           "name" : {
             "type" : "string",
@@ -3073,33 +3654,39 @@
           }
         }
       },
-      "sizes_id_body_1" : {
+      "inline_response_200_15" : {
         "type" : "object",
         "properties" : {
-          "brand" : {
-            "type" : "integer",
-            "description" : "The identifier of the Brand"
+          "success" : {
+            "type" : "boolean",
+            "example" : true
           },
-          "category" : {
-            "type" : "integer",
-            "description" : "The identifier of the Category"
-          },
-          "name" : {
+          "status" : {
             "type" : "string",
-            "description" : "The type of the size",
-            "enum" : [ "S", "M", "L", "XL", "XXL", "XXXL" ]
+            "example" : "OK"
           },
-          "chest" : {
-            "type" : "integer",
-            "description" : "The chest measurement of the size"
+          "data" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Discount"
+            }
+          }
+        }
+      },
+      "inline_response_404_16" : {
+        "type" : "object",
+        "properties" : {
+          "success" : {
+            "type" : "boolean",
+            "example" : true
           },
-          "length" : {
-            "type" : "integer",
-            "description" : "The length measurement of the size"
+          "status" : {
+            "type" : "string",
+            "example" : "NOT_FOUND"
           },
-          "width" : {
-            "type" : "integer",
-            "description" : "The width measurement of the size"
+          "message" : {
+            "type" : "string",
+            "example" : "thainguyen.domain.Discount not found"
           }
         }
       },
@@ -3134,8 +3721,80 @@
           }
         }
       },
+      "inline_response_201_7" : {
+        "type" : "object",
+        "properties" : {
+          "success" : {
+            "type" : "boolean",
+            "example" : true
+          },
+          "status" : {
+            "type" : "string",
+            "example" : "CREATED"
+          },
+          "message" : {
+            "type" : "string",
+            "example" : "Create Discount success"
+          }
+        }
+      },
+      "inline_response_400_7" : {
+        "type" : "object",
+        "properties" : {
+          "success" : {
+            "type" : "boolean",
+            "example" : false
+          },
+          "status" : {
+            "type" : "string",
+            "example" : "BAD_REQUEST"
+          },
+          "message" : {
+            "type" : "string",
+            "example" : "Method argument not valid"
+          },
+          "errors" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          }
+        }
+      },
+      "inline_response_200_16" : {
+        "type" : "object",
+        "properties" : {
+          "success" : {
+            "type" : "boolean",
+            "example" : true
+          },
+          "status" : {
+            "type" : "string",
+            "example" : "OK"
+          },
+          "data" : {
+            "$ref" : "#/components/schemas/Discount"
+          }
+        }
+      },
+      "inline_response_404_17" : {
+        "type" : "object",
+        "properties" : {
+          "success" : {
+            "type" : "boolean",
+            "example" : true
+          },
+          "status" : {
+            "type" : "string",
+            "example" : "NOT_FOUND"
+          },
+          "message" : {
+            "type" : "string",
+            "example" : "Invalid thainguyen.domain.Discount ID, thainguyen.domain.Discount not found"
+          }
+        }
+      },
       "discounts_id_body" : {
-        "required" : [ "code", "end", "kind", "quantity", "start", "type", "value" ],
         "type" : "object",
         "properties" : {
           "code" : {
@@ -3165,33 +3824,23 @@
           }
         }
       },
-      "discounts_id_body_1" : {
+      "inline_response_200_17" : {
         "type" : "object",
         "properties" : {
-          "code" : {
-            "type" : "string"
+          "success" : {
+            "type" : "boolean",
+            "example" : true
           },
-          "type" : {
+          "status" : {
             "type" : "string",
-            "enum" : [ "PERCENTAGE", "AMOUNT" ]
+            "example" : "OK"
           },
-          "kind" : {
+          "message" : {
             "type" : "string",
-            "enum" : [ "NORMAL", "FREESHIP" ]
+            "example" : "Update discount success"
           },
-          "value" : {
-            "type" : "integer"
-          },
-          "quantity" : {
-            "type" : "integer"
-          },
-          "start" : {
-            "type" : "string",
-            "format" : "date-time"
-          },
-          "end" : {
-            "type" : "string",
-            "format" : "date-time"
+          "data" : {
+            "$ref" : "#/components/schemas/Discount"
           }
         }
       }
