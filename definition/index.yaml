@@ -1321,7 +1321,7 @@
           "style" : "simple",
           "explode" : false,
           "schema" : {
-            "type" : "integer"
+            "type" : "string"
           }
         } ],
         "responses" : {
@@ -1372,7 +1372,7 @@
           "style" : "form",
           "explode" : true,
           "schema" : {
-            "type" : "integer"
+            "type" : "string"
           }
         } ],
         "responses" : {
@@ -2207,9 +2207,8 @@
         "type" : "object",
         "properties" : {
           "id" : {
-            "type" : "integer",
-            "description" : "The unique identifier for the order",
-            "format" : "int64"
+            "type" : "string",
+            "description" : "The unique identifier for the order"
           },
           "user" : {
             "$ref" : "#/components/schemas/User"
