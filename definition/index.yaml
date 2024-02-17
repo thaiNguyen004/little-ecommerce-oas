@@ -250,6 +250,47 @@
                 }
               }
             }
+          },
+          "401" : {
+            "description" : "find all orders own by user - fail(UNAUTHORIZED)",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_401"
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "basicAuth" : [ ]
+        } ]
+      }
+    },
+    "/users/orders/{id}" : {
+      "get" : {
+        "summary" : "Get order own by order id",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "ID of the user",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "find all orders own by user - success(OK)",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200_3"
+                }
+              }
+            }
           }
         },
         "security" : [ {
@@ -266,7 +307,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_3"
+                  "$ref" : "#/components/schemas/inline_response_200_4"
                 }
               }
             }
@@ -383,7 +424,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_4"
+                  "$ref" : "#/components/schemas/inline_response_200_5"
                 }
               }
             }
@@ -441,7 +482,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_4"
+                  "$ref" : "#/components/schemas/inline_response_200_5"
                 }
               }
             }
@@ -501,7 +542,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_5"
+                  "$ref" : "#/components/schemas/inline_response_200_6"
                 }
               }
             }
@@ -619,7 +660,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_6"
+                  "$ref" : "#/components/schemas/inline_response_200_7"
                 }
               }
             }
@@ -678,7 +719,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_6"
+                  "$ref" : "#/components/schemas/inline_response_200_7"
                 }
               }
             }
@@ -738,7 +779,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_7"
+                  "$ref" : "#/components/schemas/inline_response_200_8"
                 }
               }
             }
@@ -866,7 +907,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_8"
+                  "$ref" : "#/components/schemas/inline_response_200_9"
                 }
               }
             }
@@ -925,7 +966,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_8"
+                  "$ref" : "#/components/schemas/inline_response_200_9"
                 }
               }
             }
@@ -985,7 +1026,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_9"
+                  "$ref" : "#/components/schemas/inline_response_200_10"
                 }
               }
             }
@@ -1113,7 +1154,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_10"
+                  "$ref" : "#/components/schemas/inline_response_200_11"
                 }
               }
             }
@@ -1172,7 +1213,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_10"
+                  "$ref" : "#/components/schemas/inline_response_200_11"
                 }
               }
             }
@@ -1232,7 +1273,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_11"
+                  "$ref" : "#/components/schemas/inline_response_200_12"
                 }
               }
             }
@@ -1360,7 +1401,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_12"
+                  "$ref" : "#/components/schemas/inline_response_200_13"
                 }
               }
             }
@@ -1411,7 +1452,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_13"
+                  "$ref" : "#/components/schemas/inline_response_200_14"
                 }
               }
             }
@@ -1461,7 +1502,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_14"
+                  "$ref" : "#/components/schemas/inline_response_200_15"
                 }
               }
             }
@@ -1589,7 +1630,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_15"
+                  "$ref" : "#/components/schemas/inline_response_200_16"
                 }
               }
             }
@@ -1648,7 +1689,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_15"
+                  "$ref" : "#/components/schemas/inline_response_200_16"
                 }
               }
             }
@@ -1708,7 +1749,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_16"
+                  "$ref" : "#/components/schemas/inline_response_200_17"
                 }
               }
             }
@@ -1844,7 +1885,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_17"
+                  "$ref" : "#/components/schemas/inline_response_200_18"
                 }
               }
             }
@@ -1903,7 +1944,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_18"
+                  "$ref" : "#/components/schemas/inline_response_200_19"
                 }
               }
             }
@@ -2672,6 +2713,25 @@
           "data" : {
             "type" : "array",
             "items" : {
+              "$ref" : "#/components/schemas/inline_response_200_3_data"
+            }
+          }
+        }
+      },
+      "inline_response_200_4" : {
+        "type" : "object",
+        "properties" : {
+          "success" : {
+            "type" : "boolean",
+            "example" : true
+          },
+          "status" : {
+            "type" : "string",
+            "example" : "OK"
+          },
+          "data" : {
+            "type" : "array",
+            "items" : {
               "$ref" : "#/components/schemas/Brand"
             }
           }
@@ -2751,7 +2811,7 @@
           }
         }
       },
-      "inline_response_200_4" : {
+      "inline_response_200_5" : {
         "type" : "object",
         "properties" : {
           "success" : {
@@ -2800,7 +2860,7 @@
           }
         }
       },
-      "inline_response_200_5" : {
+      "inline_response_200_6" : {
         "type" : "object",
         "properties" : {
           "success" : {
@@ -2898,7 +2958,7 @@
           }
         }
       },
-      "inline_response_200_6" : {
+      "inline_response_200_7" : {
         "type" : "object",
         "properties" : {
           "success" : {
@@ -2952,7 +3012,7 @@
           }
         }
       },
-      "inline_response_200_7" : {
+      "inline_response_200_8" : {
         "type" : "object",
         "properties" : {
           "success" : {
@@ -3053,7 +3113,7 @@
           }
         }
       },
-      "inline_response_200_8" : {
+      "inline_response_200_9" : {
         "type" : "object",
         "properties" : {
           "success" : {
@@ -3109,7 +3169,7 @@
           }
         }
       },
-      "inline_response_200_9" : {
+      "inline_response_200_10" : {
         "type" : "object",
         "properties" : {
           "success" : {
@@ -3231,7 +3291,7 @@
           }
         }
       },
-      "inline_response_200_10" : {
+      "inline_response_200_11" : {
         "type" : "object",
         "properties" : {
           "success" : {
@@ -3305,7 +3365,7 @@
           }
         }
       },
-      "inline_response_200_11" : {
+      "inline_response_200_12" : {
         "type" : "object",
         "properties" : {
           "success" : {
@@ -3450,7 +3510,7 @@
           }
         }
       },
-      "inline_response_200_12" : {
+      "inline_response_200_13" : {
         "type" : "object",
         "properties" : {
           "success" : {
@@ -3483,7 +3543,7 @@
           }
         }
       },
-      "inline_response_200_13" : {
+      "inline_response_200_14" : {
         "type" : "object",
         "properties" : {
           "success" : {
@@ -3534,7 +3594,7 @@
           }
         }
       },
-      "inline_response_200_14" : {
+      "inline_response_200_15" : {
         "type" : "object",
         "properties" : {
           "success" : {
@@ -3658,7 +3718,7 @@
           }
         }
       },
-      "inline_response_200_15" : {
+      "inline_response_200_16" : {
         "type" : "object",
         "properties" : {
           "success" : {
@@ -3719,7 +3779,7 @@
           }
         }
       },
-      "inline_response_200_16" : {
+      "inline_response_200_17" : {
         "type" : "object",
         "properties" : {
           "success" : {
@@ -3826,7 +3886,7 @@
           }
         }
       },
-      "inline_response_200_17" : {
+      "inline_response_200_18" : {
         "type" : "object",
         "properties" : {
           "success" : {
@@ -3889,7 +3949,7 @@
           }
         }
       },
-      "inline_response_200_18" : {
+      "inline_response_200_19" : {
         "type" : "object",
         "properties" : {
           "success" : {
@@ -3922,6 +3982,11 @@
             "description" : "Number of lineItem of this order",
             "example" : 2
           },
+          "productId" : {
+            "type" : "integer",
+            "description" : "the identifier of product top 1 in list lineItem",
+            "example" : 200
+          },
           "productName" : {
             "type" : "string",
             "description" : "the name of product top 1 in list lineItem",
@@ -3945,10 +4010,86 @@
             "description" : "the quantity of product top 1 in list lineItem",
             "example" : 2
           },
-          "totalPrice" : {
+          "totalPriceBeforeDiscount" : {
             "type" : "integer",
-            "description" : "Total price of the order",
+            "description" : "Total price of the order before discount",
             "example" : 210000
+          },
+          "totalPriceAfterDiscount" : {
+            "type" : "integer",
+            "description" : "Total price of the order after discount",
+            "example" : 180000
+          },
+          "status" : {
+            "type" : "string",
+            "example" : "PENDING"
+          },
+          "placedAt" : {
+            "type" : "string",
+            "format" : "date"
+          },
+          "modifiedAt" : {
+            "type" : "string",
+            "format" : "date"
+          }
+        }
+      },
+      "inline_response_200_3_lineItems" : {
+        "type" : "object",
+        "properties" : {
+          "productId" : {
+            "type" : "integer",
+            "description" : "the identifier of product top 1 in list lineItem",
+            "example" : 200
+          },
+          "productName" : {
+            "type" : "string",
+            "description" : "the name of product top 1 in list lineItem",
+            "example" : "Áo Sơ Mi Dekace Premium"
+          },
+          "productPicture" : {
+            "type" : "string",
+            "example" : "link of picture"
+          },
+          "sizeName" : {
+            "type" : "string",
+            "example" : "XXL"
+          },
+          "amount" : {
+            "type" : "integer",
+            "description" : "the amount of product top 1 in list lineItem",
+            "example" : 127000
+          },
+          "quantity" : {
+            "type" : "integer",
+            "description" : "the quantity of product top 1 in list lineItem",
+            "example" : 2
+          }
+        }
+      },
+      "inline_response_200_3_data" : {
+        "type" : "object",
+        "properties" : {
+          "orderId" : {
+            "type" : "string",
+            "description" : "the identifier of the order",
+            "example" : "9db51adf-b340-4b50-82fd-b6af842555d3"
+          },
+          "lineItems" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/inline_response_200_3_lineItems"
+            }
+          },
+          "totalPriceBeforeDiscount" : {
+            "type" : "integer",
+            "description" : "Total price of the order before discount",
+            "example" : 210000
+          },
+          "totalPriceAfterDiscount" : {
+            "type" : "integer",
+            "description" : "Total price of the order after discount",
+            "example" : 180000
           },
           "status" : {
             "type" : "string",
